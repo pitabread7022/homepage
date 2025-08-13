@@ -1,77 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mubashshir - Scientist, Engineer, Creator of Intelligent Systems" />
-  <title>Mubashshir | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mubashshir - Research Scientist & Lead Product Engineer specializing in AI-driven digital twins, IoT systems, and renewable energy optimization">
+    <meta name="keywords" content="AI, Machine Learning, Digital Twins, Renewable Energy, IoT, Solar Power, Smarttrak AI, IIT Kanpur">
+    <meta name="author" content="Mubashshir">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/">
+    <meta property="og:title" content="Mubashshir - AI & Renewable Energy Engineer">
+    <meta property="og:description" content="Research Scientist & Lead Product Engineer specializing in AI-driven digital twins and renewable energy optimization">
+    <meta property="og:image" content="https://yourusername.github.io/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/">
+    <meta property="twitter:title" content="Mubashshir - AI & Renewable Energy Engineer">
+    <meta property="twitter:description" content="Research Scientist & Lead Product Engineer specializing in AI-driven digital twins and renewable energy optimization">
+    <meta property="twitter:image" content="https://yourusername.github.io/assets/og-image.jpg">
+
+    <title>Mubashshir - AI & Renewable Energy Engineer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="./style.css" as="style">
+    <link rel="preload" href="./script.js" as="script">
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <img src="assets/profile.jpg" alt="Mubashshir" class="profile-img" />
-      <h1>Mubashshir</h1>
-      <p class="tagline">Scientist | Engineer | Creator of Intelligent Systems</p>
-      <p class="quote">"We build AI as our creation — they will be our gods, and we theirs."</p>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">M</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-  <section class="about">
-    <h2>About Me</h2>
-    <p>
-      I am a corporate research scientist and lead product engineer, building intelligent
-      machines and digital twins for large-scale renewable energy systems.  
-      My work integrates AI, physics, and data to optimize systems that shape our sustainable future.
-    </p>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Building the Future of
+                    <span class="highlight">Intelligent Energy</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Research Scientist & Lead Product Engineer specializing in AI-driven digital twins, 
+                    IoT systems, and renewable energy optimization
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span><span>+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="50">0</span><span>+</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30">0</span><span>%</span>
+                        <span class="stat-label">Downtime Reduction</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                    <a href="#projects" class="btn btn-secondary">View My Work</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                    <span>AI Models</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-solar-panel" aria-hidden="true"></i>
+                    <span>Solar Systems</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-network-wired" aria-hidden="true"></i>
+                    <span>IoT Networks</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="skills">
-    <h2>Core Skills</h2>
-    <ul>
-      <li>Digital Twin Engineering & SCADA Integration</li>
-      <li>Physics-Informed Neural Networks (PINNs)</li>
-      <li>IoT Data Pipeline & Real-Time Analytics</li>
-      <li>AI/ML for Predictive Maintenance & RUL Estimation</li>
-      <li>Cloud-Native & Kubernetes Deployments</li>
-    </ul>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Bridging the gap between cutting-edge research and real-world applications</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        I'm a corporate research scientist and lead product engineer at Smarttrak AI, 
+                        where I architect intelligent systems that optimize renewable energy infrastructure.
+                    </p>
+                    <p>
+                        My work integrates physics-informed neural networks, real-time IoT telemetry, 
+                        and cloud-native architectures to create digital twins that predict failures, 
+                        optimize performance, and extend asset life in multi-megawatt solar plants.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <div>
+                                <h4>IIT Kanpur Graduate</h4>
+                                <p>Double Major in Physics & Aerospace Engineering</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                            <div>
+                                <h4>Innovation Leader</h4>
+                                <p>Pioneering AI-driven energy optimization</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                            <div>
+                                <h4>Global Impact</h4>
+                                <p>Solutions deployed across multiple continents</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        <p>Professional Photo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="projects">
-    <h2>Selected Works</h2>
-    <div class="project-card">
-      <h3>Solar Inverter Fault Prediction</h3>
-      <p>
-        Developed a hybrid AI + physics model for early fault detection in 1.25 MW inverters,
-        integrating SCADA, IoT telemetry, and cloud analytics.
-      </p>
-    </div>
-    <div class="project-card">
-      <h3>Digital Twin for Solar Plant Optimization</h3>
-      <p>
-        Built a real-time simulation and control system improving plant performance,
-        increasing energy yield by predictive tracking & weather-adaptive algorithms.
-      </p>
-    </div>
-    <div class="project-card">
-      <h3>IoT + Grafana + InfluxDB Live Monitoring</h3>
-      <p>
-        Designed full-stack live telemetry visualization with MQTT ingestion,
-        Dockerized microservices, and Grafana dashboards.
-      </p>
-    </div>
-  </section>
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Expertise</h2>
+                <p>Technical skills that drive innovation in renewable energy</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-robot" aria-hidden="true"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Physics-Informed Neural Networks, Digital Twins, Predictive Analytics, Fault Detection</p>
+                    <div class="skill-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">PINNs</span>
+                        <span class="tag">LSTM</span>
+                        <span class="tag">Autoencoders</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                    </div>
+                    <h3>Energy Systems</h3>
+                    <p>Solar Plant Optimization, Microgrid Management, SCADA Integration, Power Flow Analysis</p>
+                    <div class="skill-tags">
+                        <span class="tag">SCADA</span>
+                        <span class="tag">EMS</span>
+                        <span class="tag">PV Modeling</span>
+                        <span class="tag">Grid Integration</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired" aria-hidden="true"></i>
+                    </div>
+                    <h3>IoT & Data Engineering</h3>
+                    <p>Real-time Telemetry, MQTT/Kafka Pipelines, Time-series Databases, Edge Computing</p>
+                    <div class="skill-tags">
+                        <span class="tag">MQTT</span>
+                        <span class="tag">InfluxDB</span>
+                        <span class="tag">Kafka</span>
+                        <span class="tag">TimescaleDB</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cloud" aria-hidden="true"></i>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>Kubernetes Orchestration, Docker Containers, Azure Cloud, CI/CD Pipelines</p>
+                    <div class="skill-tags">
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    </div>
+                    <h3>Data Visualization</h3>
+                    <p>Grafana Dashboards, Real-time Monitoring, Custom HTML Panels, Performance Analytics</p>
+                    <div class="skill-tags">
+                        <span class="tag">Grafana</span>
+                        <span class="tag">Flux</span>
+                        <span class="tag">HTML Panels</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cogs" aria-hidden="true"></i>
+                    </div>
+                    <h3>System Integration</h3>
+                    <p>End-to-End Pipeline Design, API Development, Microservices Architecture, Performance Optimization</p>
+                    <div class="skill-tags">
+                        <span class="tag">Microservices</span>
+                        <span class="tag">REST APIs</span>
+                        <span class="tag">Performance</span>
+                        <span class="tag">Scalability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></p>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Real-world solutions that demonstrate technical excellence and business impact</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-solar-panel" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered Solar Inverter Digital Twin</h3>
+                        <p>Developed physics-informed neural networks for 1.25 MW solar inverters, enabling fault prediction and RUL estimation with 30% downtime reduction.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">PINNs</span>
+                            <span class="tech-tag">SCADA</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <span class="impact-number">30%</span>
+                                <span class="impact-label">Downtime Reduction</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-number">90%+</span>
+                                <span class="impact-label">Fault Detection Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-Time IoT Monitoring Platform</h3>
+                        <p>Built end-to-end telemetry pipeline from MQTT sensors to Grafana dashboards, enabling millisecond-latency monitoring of solar plant operations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">InfluxDB</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Physics-Informed Solar Forecasting</h3>
+                        <p>Created multi-resolution convolutional autoencoders for satellite-based irradiance prediction, achieving scale-aware forecasting across geographic regions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Autoencoders</span>
+                            <span class="tech-tag">A100 GPU</span>
+                            <span class="tech-tag">Satellite Data</span>
+                            <span class="tech-tag">Mixed Precision</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hybrid Microgrid Energy Management</h3>
+                        <p>Designed modular EMS for PV + Battery + Diesel systems, enabling predictive orchestration and mission-critical resilience in industrial microgrids.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">EMS</span>
+                            <span class="tech-tag">Microgrid</span>
+                            <span class="tech-tag">Predictive Control</span>
+                            <span class="tech-tag">Real-time APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Mubashshir. Built with logic, reason, and code.</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <p>Ready to discuss the future of intelligent energy systems?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>I'm always interested in discussing new opportunities, collaborations, or innovative projects in renewable energy and AI.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourusername</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Mubashshir</h4>
+                    <p>Building intelligent systems for a sustainable future</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#expertise">Expertise</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/m-uddin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://github.com/pitabread7022" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://x.com/u_mubashshir" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2025</span> Mubashshir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./script.js"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mubashshir",
+        "jobTitle": "Research Scientist & Lead Product Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Smarttrak AI"
+        },
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "IIT Kanpur"
+        },
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Digital Twins",
+            "Renewable Energy",
+            "IoT Systems",
+            "Solar Power",
+            "Physics-Informed Neural Networks"
+        ],
+        "url": "https://github.com/pitabread7022",
+        "sameAs": [
+            "https://linkedin.com/in/m-uddin",
+            "https://x.com/u_mubashshir"
+        ]
+    }
+    </script>
 </body>
 </html>
