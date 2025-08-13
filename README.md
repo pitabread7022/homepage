@@ -19,19 +19,19 @@ A professional, responsive portfolio website showcasing expertise in AI, renewab
 ### Quick Start (Recommended)
 
 1. **Create a new repository** on GitHub:
-   - Name it `yourusername.github.io` (replace `yourusername` with your actual GitHub username)
+   - Name it `pitabread7022.github.io` (this will be your live URL)
    - Make it **public**
    - Don't initialize with README, .gitignore, or license
 
 2. **Clone the repository** to your local machine:
    ```bash
-   git clone https://github.com/yourusername/yourusername.github.io.git
-   cd yourusername.github.io
+   git clone https://github.com/pitabread7022/pitabread7022.github.io.git
+   cd pitabread7022.github.io
    ```
 
 3. **Copy all website files** into the repository:
    ```
-   yourusername.github.io/
+   pitabread7022.github.io/
    ├── index.html
    ├── style.css
    ├── script.js
@@ -49,7 +49,7 @@ A professional, responsive portfolio website showcasing expertise in AI, renewab
    git push origin main
    ```
 
-5. **Your website is automatically live** at: `https://yourusername.github.io`
+5. **Your website is automatically live** at: `https://pitabread7022.github.io`
 
 ### Alternative: Project Repository
 
@@ -61,7 +61,7 @@ If you want to use a different repository name:
 4. Under **Source**, select **Deploy from a branch**
 5. Choose **main** branch and **/ (root)** folder
 6. Click **Save**
-7. Your site will be live at: `https://yourusername.github.io/portfolio`
+7. Your site will be live at: `https://pitabread7022.github.io/portfolio`
 
 ## 🎨 Customization
 
@@ -79,8 +79,8 @@ Update the following in `index.html`:
 1. **Update all URLs** in `index.html`:
    ```html
    <!-- Replace these with your actual URLs -->
-   <meta property="og:url" content="https://yourusername.github.io/">
-   <meta property="twitter:url" content="https://yourusername.github.io/">
+   <meta property="og:url" content="https://pitabread7022.github.io/">
+   <meta property="twitter:url" content="https://pitabread7022.github.io/">
    <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a>
    <a href="https://github.com/yourusername">github.com/yourusername</a>
    ```
@@ -102,10 +102,10 @@ Update the following in `index.html`:
 ## 📁 File Structure for GitHub Pages
 
 ```
-yourusername.github.io/
+pitabread7022.github.io/
 ├── index.html          # Main website (required)
-├── style.css           # Styles and animations (required)
-├── script.js           # Interactive functionality (required)
+├── style.css           # CSS styles and animations (required)
+├── script.js           # JavaScript functionality (required)
 ├── sw.js               # Service worker for offline support (optional)
 ├── README.md           # This file
 └── assets/             # Images and other assets (optional)
@@ -189,7 +189,7 @@ The contact form includes:
    ```
    Type: CNAME
    Name: @
-   Value: yourusername.github.io
+   Value: pitabread7022.github.io
    ```
 
 ### GitHub Actions for Deployment

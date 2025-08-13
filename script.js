@@ -9,16 +9,15 @@ function initializePortfolio() {
     initializeNavigation();
     initializeSmoothScrolling();
     initializeScrollEffects();
-    initializeAnimations();
     initializeContactForm();
     initializeCounters();
     initializeTypingEffect();
-    initializeScrollProgress();
-    initializeKeyboardNavigation();
-    initializeAccessibility();
     
     // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
     
     console.log('Portfolio website loaded successfully! 🚀');
 }
@@ -32,10 +31,6 @@ function initializeNavigation() {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
-            // Update aria-expanded for accessibility
-            const isExpanded = navMenu.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isExpanded);
         });
         
         // Close mobile menu when clicking on a link
@@ -43,7 +38,6 @@ function initializeNavigation() {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
         
@@ -52,7 +46,6 @@ function initializeNavigation() {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
     }
@@ -77,7 +70,7 @@ function initializeSmoothScrolling() {
 
 // Scroll effects (navbar background, parallax)
 function initializeScrollEffects() {
-    const throttledScrollHandler = throttle(() => {
+    window.addEventListener('scroll', () => {
         // Navbar background change
         const navbar = document.querySelector('.navbar');
         if (navbar) {
@@ -96,59 +89,6 @@ function initializeScrollEffects() {
             const speed = 0.5 + (index * 0.1);
             const yPos = -(window.pageYOffset * speed);
             card.style.transform = `translateY(${yPos}px)`;
-        });
-    }, 16); // ~60fps
-    
-    window.addEventListener('scroll', throttledScrollHandler);
-}
-
-// Intersection Observer for fade-in animations
-function initializeAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all sections for animation
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('fade-in');
-        observer.observe(section);
-    });
-    
-    // Smooth reveal animation for project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    projectCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        projectObserver.observe(card);
-    });
-    
-    // Add hover effects to expertise cards
-    document.querySelectorAll('.expertise-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
         });
     });
 }
@@ -334,95 +274,6 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Scroll progress indicator
-function initializeScrollProgress() {
-    const progressBar = document.createElement('div');
-    progressBar.className = 'scroll-progress';
-    document.body.appendChild(progressBar);
-    
-    window.addEventListener('scroll', () => {
-        const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        progressBar.style.width = scrolled + '%';
-    });
-}
-
-// Keyboard navigation support
-function initializeKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // Close mobile menu
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            if (hamburger && navMenu) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            }
-        }
-        
-        // Navigate sections with arrow keys
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-            e.preventDefault();
-            navigateSections(e.key);
-        }
-    });
-}
-
-// Section navigation
-function navigateSections(direction) {
-    const sections = Array.from(document.querySelectorAll('section[id]'));
-    const currentSection = sections.find(section => {
-        const rect = section.getBoundingClientRect();
-        return rect.top <= 100 && rect.bottom >= 100;
-    });
-    
-    if (currentSection) {
-        const currentIndex = sections.indexOf(currentSection);
-        let targetIndex;
-        
-        if (direction === 'ArrowDown') {
-            targetIndex = Math.min(currentIndex + 1, sections.length - 1);
-        } else {
-            targetIndex = Math.max(currentIndex - 1, 0);
-        }
-        
-        const targetSection = sections[targetIndex];
-        const offsetTop = targetSection.offsetTop - 70;
-        
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Accessibility features
-function initializeAccessibility() {
-    // Add focus management for accessibility
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
-        }
-    });
-    
-    document.addEventListener('mousedown', () => {
-        document.body.classList.remove('keyboard-navigation');
-    });
-    
-    // Add focus styles for keyboard navigation
-    const style = document.createElement('style');
-    style.textContent = `
-        .keyboard-navigation .nav-link:focus,
-        .keyboard-navigation .btn:focus,
-        .keyboard-navigation input:focus,
-        .keyboard-navigation textarea:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-    `;
-    document.head.appendChild(style);
-}
-
 // Notification system
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -437,6 +288,22 @@ function showNotification(message, type = 'info') {
             <span class="notification-message">${message}</span>
             <button class="notification-close" aria-label="Close notification">&times;</button>
         </div>
+    `;
+    
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+        max-width: 400px;
     `;
     
     // Add to page
@@ -469,20 +336,6 @@ function showNotification(message, type = 'info') {
     });
 }
 
-// Performance optimization: Throttle function
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-}
-
 // Add loading states to buttons
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('btn-primary') && !e.target.disabled) {
@@ -493,43 +346,16 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Error handling for missing elements
-function safeQuerySelector(selector) {
-    try {
-        return document.querySelector(selector);
-    } catch (error) {
-        console.warn(`Element not found: ${selector}`);
-        return null;
-    }
-}
-
-// GitHub Pages specific optimizations
-function optimizeForGitHubPages() {
-    // Ensure all relative paths work correctly
-    const links = document.querySelectorAll('a[href^="./"]');
-    links.forEach(link => {
-        link.href = link.href.replace('./', '');
+// Add hover effects to expertise cards
+document.addEventListener('DOMContentLoaded', function() {
+    const expertiseCards = document.querySelectorAll('.expertise-card');
+    expertiseCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
     });
-    
-    // Optimize for GitHub Pages performance
-    if (window.location.hostname.includes('github.io')) {
-        // Add GitHub Pages specific analytics or tracking if needed
-        console.log('Running on GitHub Pages - optimizations applied');
-    }
-}
-
-// Initialize GitHub Pages optimizations
-document.addEventListener('DOMContentLoaded', optimizeForGitHubPages);
-
-// Service Worker registration for offline support (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
+});
