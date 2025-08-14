@@ -248,30 +248,45 @@ function animateCounters() {
 // Typing effect for hero title
 function initializeTypingEffect() {
     const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-        
-        setTimeout(() => {
-            typeWriter(heroTitle, originalText, 50);
-        }, 500);
-    }
+    if (!heroTitle) return;
+    setTimeout(() => {
+        typeWriterPreserveHtml(heroTitle, 50);
+    }, 500);
 }
 
-// Typewriter function
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
+function typeWriterPreserveHtml(container, speed = 100) {
+    const charSpans = [];
+
+    // Wrap each character of every text node in a hidden span
+    function wrapTextNodes(node) {
+        const children = Array.from(node.childNodes);
+        children.forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                const text = child.nodeValue || '';
+                const frag = document.createDocumentFragment();
+                for (let i = 0; i < text.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = text[i];
+                    span.style.visibility = 'hidden';
+                    frag.appendChild(span);
+                    charSpans.push(span);
+                }
+                node.replaceChild(frag, child);
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                wrapTextNodes(child);
+            }
+        });
     }
-    
-    type();
+    wrapTextNodes(container);
+
+    let index = 0;
+    (function revealNext() {
+        if (index < charSpans.length) {
+            charSpans[index].style.visibility = 'visible';
+            index += 1;
+            setTimeout(revealNext, speed);
+        }
+    })();
 }
 
 // Notification system
