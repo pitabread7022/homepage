@@ -1,861 +1,1363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mubashshir - Research Scientist & Lead Product Engineer specializing in AI-driven digital twins, IoT systems, and renewable energy optimization">
-    <meta name="keywords" content="AI, Machine Learning, Digital Twins, Renewable Energy, IoT, Solar Power, Smarttrak AI, IIT Kanpur">
-    <meta name="author" content="Mubashshir">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pitabread7022.github.io/">
-    <meta property="og:title" content="Mubashshir - AI & Renewable Energy Engineer">
-    <meta property="og:description" content="Research Scientist & Lead Product Engineer specializing in AI-driven digital twins and renewable energy optimization">
-    <meta property="og:image" content="https://pitabread7022.github.io/assets/og-image.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://pitabread7022.github.io/">
-    <meta property="twitter:title" content="Mubashshir - AI & Renewable Energy Engineer">
-    <meta property="twitter:description" content="Research Scientist & Lead Product Engineer specializing in AI-driven digital twins and renewable energy optimization">
-    <meta property="twitter:image" content="https://pitabread7022.github.io/assets/og-image.jpg">
+  <!-- Primary SEO -->
+  <title>Mubashshir | Physics-Trained Engineer · AI for Physical Infrastructure</title>
+  <meta name="description" content="Mubashshir — IIT Kanpur physicist and aerospace engineer building AI systems for the physical world. Solar SCADA, physics-informed ML, LLM agents over real sensor data." />
+  <meta name="keywords" content="physics informed machine learning, AI for physical infrastructure, solar SCADA engineer, LangGraph multi-agent systems, IIT Kanpur aerospace, energy AI engineer, physics trained software engineer, founding engineer AI" />
+  <meta name="author" content="Mubashshir" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pitabread7022.github.io/" />
 
-    <title>Mubashshir - AI & Renewable Energy Engineer</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- Inline CSS for basic styling -->
-    <style>
-        /* Basic reset and fallback styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #6366f1;
-            background: linear-gradient(135deg, #6366f1, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color: #1f2937;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #6366f1;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #6366f1;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        
-        .bar {
-            width: 25px;
-            height: 3px;
-            background: #1f2937;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
-            padding-top: 70px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #1f2937;
-        }
-        
-        .highlight {
-            background: linear-gradient(135deg, #6366f1, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #6b7280;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            display: inline-block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #6366f1;
-        }
-        
-        .stat-label {
-            font-size: 0.875rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .btn {
-            padding: 0.875rem 2rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .btn-primary {
-            background: #6366f1;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #4f46e5;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #6366f1;
-            border: 2px solid #6366f1;
-        }
-        
-        .btn-secondary:hover {
-            background: #6366f1;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            height: 400px;
-        }
-        
-        .floating-card {
-            position: absolute;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-card i {
-            font-size: 2rem;
-            color: #6366f1;
-        }
-        
-        .floating-card span {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #6b7280;
-        }
-        
-        .card-1 {
-            top: 20px;
-            left: 20px;
-            animation-delay: 0s;
-        }
-        
-        .card-2 {
-            top: 120px;
-            right: 40px;
-            animation-delay: 2s;
-        }
-        
-        .card-3 {
-            bottom: 40px;
-            left: 60px;
-            animation-delay: 4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                padding: 2rem 0;
-                height: calc(100vh - 70px);
-                overflow-y: auto;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-            
-            .floating-card {
-                position: relative;
-                margin: 1rem 0;
-                animation: none;
-            }
-            
-            .hero-visual {
-                height: auto;
-                margin-top: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-        
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Mubashshir</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#expertise" class="nav-link">Expertise</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger" aria-label="Toggle navigation menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mubashshir · Physics-Trained Engineer Building AI for Physical Infrastructure" />
+  <meta property="og:description" content="IIT Kanpur Physics & Aerospace. Building production AI systems where physical reality meets machine intelligence — solar energy, sensor telemetry, agentic reasoning." />
+  <meta property="og:url" content="https://pitabread7022.github.io/" />
+  <meta property="og:image" content="https://pitabread7022.github.io/og-image.png" />
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Building the Future of
-                    <span class="highlight">Intelligent Energy</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Research Scientist & Lead Product Engineer specializing in AI-driven digital twins, 
-                    IoT systems, and renewable energy optimization
-                </p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="2">0</span><span>+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="50">0</span><span>+</span>
-                        <span class="stat-label">Projects Delivered</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="30">0</span><span>%</span>
-                        <span class="stat-label">Downtime Reduction</span>
-                    </div>
-                </div>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Let's Connect</a>
-                    <a href="#projects" class="btn btn-secondary">View My Work</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <i class="fas fa-brain"></i>
-                    <span>AI Models</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-solar-panel"></i>
-                    <span>Solar Systems</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-network-wired"></i>
-                    <span>IoT Networks</span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mubashshir · Physics-Trained Engineer" />
+  <meta name="twitter:description" content="Building AI systems for physical infrastructure. IIT Kanpur Physics + Aerospace. Solar SCADA, LLM agents, physics-informed ML." />
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p>Bridging the gap between cutting-edge research and real-world applications</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">
-                        I'm a corporate research scientist and lead product engineer at Smarttrak AI, 
-                        where I architect intelligent systems that optimize renewable energy infrastructure.
-                    </p>
-                    <p>
-                        My work integrates physics-informed neural networks, real-time IoT telemetry, 
-                        and cloud-native architectures to create digital twins that predict failures, 
-                        optimize performance, and extend asset life in multi-megawatt solar plants.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>IIT Kanpur Graduate</h4>
-                                <p>Double Major in Physics & Aerospace Engineering</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-rocket"></i>
-                            <div>
-                                <h4>Innovation Leader</h4>
-                                <p>Pioneering AI-driven energy optimization</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-globe"></i>
-                            <div>
-                                <h4>Global Impact</h4>
-                                <p>Solutions deployed across multiple continents</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="assets/profile.jpg" alt="Mubashshir - Professional portrait" class="profile-photo" loading="lazy" onerror="this.outerHTML='\x3cdiv class=\'image-placeholder\'\x3e\x3ci class=\'fas fa-user-tie\'\x3e\x3c/i\x3e\x3cp\x3eProfessional Photo\x3c/p\x3e\x3c/div\x3e'">
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mubashshir",
+    "jobTitle": "Physics-Trained Engineer | AI for Physical Infrastructure",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "IIT Kanpur"
+    },
+    "knowsAbout": [
+      "Physics-Informed Machine Learning",
+      "Solar Energy Systems",
+      "SCADA Systems",
+      "LangGraph Multi-Agent AI",
+      "Aerospace Engineering",
+      "General Relativity",
+      "Time-Series Forecasting"
+    ],
+    "url": "https://pitabread7022.github.io/",
+    "sameAs": [
+      "https://github.com/pitabread7022",
+      "https://linkedin.com/in/m-uddin",
+      "https://x.com/u_mubashshir"
+    ]
+  }
+  </script>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="expertise">
-        <div class="container">
-            <div class="section-header">
-                <h2>Core Expertise</h2>
-                <p>Technical skills that drive innovation in renewable energy</p>
-            </div>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Physics-Informed Neural Networks, Digital Twins, Predictive Analytics, Fault Detection</p>
-                    <div class="skill-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">PINNs</span>
-                        <span class="tag">LSTM</span>
-                        <span class="tag">Autoencoders</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Energy Systems</h3>
-                    <p>Solar Plant Optimization, Microgrid Management, SCADA Integration, Power Flow Analysis</p>
-                    <div class="skill-tags">
-                        <span class="tag">SCADA</span>
-                        <span class="tag">EMS</span>
-                        <span class="tag">PV Modeling</span>
-                        <span class="tag">Grid Integration</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>IoT & Data Engineering</h3>
-                    <p>Real-time Telemetry, MQTT/Kafka Pipelines, Time-series Databases, Edge Computing</p>
-                    <div class="skill-tags">
-                        <span class="tag">MQTT</span>
-                        <span class="tag">InfluxDB</span>
-                        <span class="tag">Kafka</span>
-                        <span class="tag">TimescaleDB</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud & DevOps</h3>
-                    <p>Kubernetes Orchestration, Docker Containers, Azure Cloud, CI/CD Pipelines</p>
-                    <div class="skill-tags">
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Azure</span>
-                        <span class="tag">FastAPI</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Data Visualization</h3>
-                    <p>Grafana Dashboards, Real-time Monitoring, Custom HTML Panels, Performance Analytics</p>
-                    <div class="skill-tags">
-                        <span class="tag">Grafana</span>
-                        <span class="tag">Flux</span>
-                        <span class="tag">HTML Panels</span>
-                        <span class="tag">Real-time</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>System Integration</h3>
-                    <p>End-to-End Pipeline Design, API Development, Microservices Architecture, Performance Optimization</p>
-                    <div class="skill-tags">
-                        <span class="tag">Microservices</span>
-                        <span class="tag">REST APIs</span>
-                        <span class="tag">Performance</span>
-                        <span class="tag">Scalability</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>Real-world solutions that demonstrate technical excellence and business impact</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-solar-panel"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI-Powered Solar Inverter Digital Twin</h3>
-                        <p>Developed physics-informed neural networks for 1.25 MW solar inverters, enabling fault prediction and RUL estimation with 30% downtime reduction.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">PINNs</span>
-                            <span class="tech-tag">SCADA</span>
-                            <span class="tech-tag">Azure</span>
-                        </div>
-                        <div class="project-impact">
-                            <div class="impact-item">
-                                <span class="impact-number">30%</span>
-                                <span class="impact-label">Downtime Reduction</span>
-                            </div>
-                            <div class="impact-item">
-                                <span class="impact-number">90%+</span>
-                                <span class="impact-label">Fault Detection Accuracy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Real-Time IoT Monitoring Platform</h3>
-                        <p>Built end-to-end telemetry pipeline from MQTT sensors to Grafana dashboards, enabling millisecond-latency monitoring of solar plant operations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MQTT</span>
-                            <span class="tech-tag">InfluxDB</span>
-                            <span class="tech-tag">Grafana</span>
-                            <span class="tech-tag">Kubernetes</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Physics-Informed Solar Forecasting</h3>
-                        <p>Created multi-resolution convolutional autoencoders for satellite-based irradiance prediction, achieving scale-aware forecasting across geographic regions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Autoencoders</span>
-                            <span class="tech-tag">A100 GPU</span>
-                            <span class="tech-tag">Satellite Data</span>
-                            <span class="tech-tag">Mixed Precision</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Hybrid Microgrid Energy Management</h3>
-                        <p>Designed modular EMS for PV + Battery + Diesel systems, enabling predictive orchestration and mission-critical resilience in industrial microgrids.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">EMS</span>
-                            <span class="tech-tag">Microgrid</span>
-                            <span class="tech-tag">Predictive Control</span>
-                            <span class="tech-tag">Real-time APIs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Let's Connect</h2>
-                <p>Ready to discuss the future of intelligent energy systems?</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p>I'm always interested in discussing new opportunities, collaborations, or innovative projects in renewable energy and AI.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:mubashshir12uddin@gmail.com">mubashshir12uddin@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fab fa-linkedin"></i>
-                            <div>
-                                <h4>LinkedIn</h4>
-                                <a href="https://linkedin.com/in/m-uddin" target="_blank" rel="noopener noreferrer">linkedin.com/in/m-uddin</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fab fa-github"></i>
-                            <div>
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/pitabread7022" target="_blank" rel="noopener noreferrer">github.com/pitabread7022</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm" novalidate>
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            <div class="error-message" id="nameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                            <div class="error-message" id="emailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                            <div class="error-message" id="messageError"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Mubashshir</h4>
-                    <p>Building intelligent systems for a sustainable future</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#expertise">Expertise</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/m-uddin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/pitabread7022" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://x.com/u_mubashshir" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear">2025</span> Mubashshir. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    
-    <!-- Inline JavaScript for basic functionality -->
-    <script>
-        // Basic mobile navigation functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                });
-                
-                // Close mobile menu when clicking on a link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    });
-                });
-            }
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const offsetTop = target.offsetTop - 70;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Set current year in footer
-            const currentYearElement = document.getElementById('currentYear');
-            if (currentYearElement) {
-                currentYearElement.textContent = new Date().getFullYear();
-            }
-            
-            console.log('Portfolio website loaded successfully! 🚀');
-        });
-    </script>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Mubashshir",
-        "jobTitle": "Research Scientist & Lead Product Engineer",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Smarttrak AI"
-        },
-        "alumniOf": {
-            "@type": "Organization",
-            "name": "IIT Kanpur"
-        },
-        "knowsAbout": [
-            "Artificial Intelligence",
-            "Machine Learning",
-            "Digital Twins",
-            "Renewable Energy",
-            "IoT Systems",
-            "Solar Power",
-            "Physics-Informed Neural Networks"
-        ],
-        "url": "https://pitabread7022.github.io",
-        "sameAs": [
-            "https://linkedin.com/in/m-uddin",
-            "https://github.com/pitabread7022",
-            "https://x.com/u_mubashshir"
-        ]
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:        #080a0f;
+      --surface:   #0d1117;
+      --border:    rgba(255,255,255,0.07);
+      --border-hi: rgba(255,255,255,0.15);
+      --text:      #e8e6e0;
+      --muted:     #6b7280;
+      --accent:    #c8a96e;       /* warm gold — physics/brass instrument energy */
+      --accent2:   #4a9eff;       /* cold blue — computation */
+      --accent3:   #7fffb2;       /* signal green — live data */
+      --glow:      rgba(200,169,110,0.12);
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-mono:    'DM Mono', 'Courier New', monospace;
+      --ff-body:    'DM Sans', sans-serif;
     }
-    </script>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--accent); color: #000; }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section { padding: 7rem 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(0px);
+    }
+
+    nav.scrolled {
+      background: rgba(8,10,15,0.92);
+      border-bottom-color: var(--border);
+      backdrop-filter: blur(20px);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--ff-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 4rem;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-tag {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1.hero-name {
+      font-family: var(--ff-display);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s forwards;
+    }
+
+    h1.hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-descriptor {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-descriptor strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s forwards;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #e0bf80;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-hi);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Hero right — physics terminal */
+    .hero-visual {
+      opacity: 0;
+      animation: fadeIn 1.2s 0.8s forwards;
+    }
+
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,169,110,0.08);
+    }
+
+    .terminal-bar {
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .terminal-title {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      line-height: 2;
+    }
+
+    .t-comment { color: var(--muted); }
+    .t-key { color: var(--accent2); }
+    .t-val { color: var(--accent3); }
+    .t-str { color: var(--accent); }
+    .t-num { color: #f9826c; }
+    .t-section { color: var(--text); font-weight: 500; }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--accent3);
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 80px;
+    }
+
+    h2.section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      font-size: 1.05rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { border-top: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-text .pull-quote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--text);
+      border-left: 2px solid var(--accent);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2rem 0;
+      line-height: 1.5;
+    }
+
+    .credential-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .credential {
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .credential:hover { border-color: var(--border-hi); }
+
+    .credential::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+    }
+
+    .credential-label {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .credential-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── SKILLS / STACK ── */
+    #stack { border-top: 1px solid var(--border); }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stack-card {
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stack-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--glow);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .stack-card:hover {
+      border-color: rgba(200,169,110,0.3);
+      transform: translateY(-3px);
+    }
+
+    .stack-card:hover::after { opacity: 1; }
+
+    .stack-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .stack-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .stack-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .tag.accent { border-color: rgba(200,169,110,0.3); color: var(--accent); background: rgba(200,169,110,0.06); }
+    .tag.blue   { border-color: rgba(74,158,255,0.3);  color: var(--accent2); background: rgba(74,158,255,0.06); }
+    .tag.green  { border-color: rgba(127,255,178,0.3); color: var(--accent3); background: rgba(127,255,178,0.06); }
+
+    /* ── WORK ── */
+    #work { border-top: 1px solid var(--border); }
+
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: all 0.2s;
+    }
+
+    .work-item:hover .work-role { color: var(--accent); }
+
+    .work-period {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding-top: 0.2rem;
+    }
+
+    .work-role {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .work-company {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .work-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .work-badge {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      white-space: nowrap;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { border-top: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+    }
+
+    .project-label {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-physics {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--accent3);
+      padding: 1rem;
+      background: rgba(127,255,178,0.04);
+      border: 1px solid rgba(127,255,178,0.12);
+      border-radius: 2px;
+      line-height: 1.9;
+    }
+
+    .project-physics .label {
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── THINKING ── */
+    #thinking { border-top: 1px solid var(--border); }
+
+    .thinking-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .thought-card {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: border-color 0.3s;
+      position: relative;
+    }
+
+    .thought-card::before {
+      content: attr(data-index);
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+    }
+
+    .thought-card:hover { border-color: var(--border-hi); }
+
+    .thought-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .thought-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      border-top: 1px solid var(--border);
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,169,110,0.06) 0%, transparent 70%);
+    }
+
+    .contact-inner {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-inner h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .contact-inner h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-inner p {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.25s;
+      text-transform: uppercase;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+      border-color: rgba(200,169,110,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── DIVIDER ── */
+    .physics-divider {
+      text-align: center;
+      padding: 3rem 0;
+      font-family: var(--ff-mono);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.06);
+      letter-spacing: 0.3em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner      { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual     { display: none; }
+      .about-grid      { grid-template-columns: 1fr; gap: 3rem; }
+      .stack-grid      { grid-template-columns: 1fr; }
+      .thinking-grid   { grid-template-columns: 1fr; }
+      .projects-grid   { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; gap: 1.5rem; }
+      .work-item       { grid-template-columns: 1fr; gap: 0.5rem; }
+      .work-badge      { display: none; }
+      .nav-links       { display: none; }
+    }
+    /* Add this under your existing about styles inside <style> */
+    .profile-photo {
+      width: 50%;
+      height: auto;
+      max-width: 320px; /* Adjust to preferred maximum width */
+      border-radius: 4px;
+      border: 1px solid var(--border-hi);
+      display: block;
+      object-fit: cover;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      max-width: 320px;
+      height: 320px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <a href="#" class="nav-logo">M. // Engineer</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-tag">Physics + Engineering + AI</div>
+          <h1 class="hero-name">
+            Building AI for the<br /><em>Physical World.</em>
+          </h1>
+          <p class="hero-descriptor">
+            <strong>IIT Kanpur · Physics & Aerospace Engineering.</strong><br />
+            I build production AI systems that reason about physical reality — solar energy infrastructure, sensor telemetry, simulation engines, and agentic intelligence over real-world data.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">See the Work</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+              <span class="terminal-title">profile.json</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-comment">// physics-trained engineer</div>
+              <div>{</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-str">"Mubashshir"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"foundation"</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Physics"</span>, <span class="t-str">"Aerospace Eng"</span></div>
+              <div>&nbsp;&nbsp;],</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"alma_mater"</span>: <span class="t-str">"IIT Kanpur"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"builds"</span>: <span class="t-str">"AI × Physical Systems"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"current"</span>: <span class="t-str">"ScadaNXT · Solar SCADA"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"domains"</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Physics-Informed ML"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"LLM Agents"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Energy Infrastructure"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Time-Series Forecasting"</span></div>
+              <div>&nbsp;&nbsp;],</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"interest_in"</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"General Relativity"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"AGI"</span>, <span class="t-str">"Quantum Mechanics"</span></div>
+              <div>&nbsp;&nbsp;],</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"open_to"</span>: <span class="t-val">true</span></div>
+              <div>} <span class="cursor"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="physics-divider">G_μν + Λg_μν = (8πG/c⁴) T_μν</div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-label">About</div>
+          <h2 class="section-title">Where Physics Meets<br />Production Systems</h2>
+          <p>
+            I hold a double major in <strong>Physics and Aerospace Engineering from IIT Kanpur</strong> — one of India's top technical institutions. But my trajectory wasn't toward academia. It was toward the question: <em>what happens when you put first-principles physical thinking inside production software?</em>
+          </p>
+          <div class="pull-quote">
+            "Most engineers simulate. I model the underlying physics and let the simulation follow."
+          </div>
+          <p>
+            As <strong>Founding Software Engineer at TerraNxt</strong>, I built ScadaNXT — a solar SCADA and operational intelligence platform — from the ground up. That meant writing the inverter physics models, the power flow engine, the LLM agents querying live telemetry, and the infrastructure that stitches it all together.
+          </p>
+          <p>
+            I'm interested in roles where the physics isn't decorative — where understanding <strong>degradation curves, thermal dynamics, plasma behavior, or orbital mechanics</strong> is the actual engineering edge.
+          </p>
+        </div>
+
+        <div class="credential-stack reveal">
+          <div class="credential">
+            <div class="credential-label">Education</div>
+            <div class="credential-value">B.Tech · Physics + Aerospace Engineering</div>
+            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">IIT Kanpur</div>
+          </div>
+          <div class="credential">
+            <div class="credential-label">Current Role</div>
+            <div class="credential-value">Founding Software Engineer</div>
+            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">TerraNxt · ScadaNXT Platform</div>
+          </div>
+          <div class="credential">
+            <div class="credential-label">Previous</div>
+            <div class="credential-value">Research Scientist · Lead Product Engineer</div>
+            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">Smarttrak AI</div>
+          </div>
+          <div class="credential">
+            <div class="credential-label">Location</div>
+            <div class="credential-value">Gurgaon, India · Open to Relocation</div>
+            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent3);margin-top:0.3rem;">US · EU · Remote</div>
+          </div>
+          <div class="credential">
+            <div class="credential-label">Deep Interests</div>
+            <div class="credential-value">General Relativity · Quantum Mechanics · AGI</div>
+          </div>
+          <div class="about-image">
+            <img src="assets/profile.jpg" alt="Mubashshir - Professional portrait" class="profile-photo" loading="lazy" onerror="this.outerHTML='<div class=\'image-placeholder\'><p>Mubashshir</p></div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="container">
+      <div class="section-label reveal">Technical Stack</div>
+      <h2 class="section-title reveal">What I Build With</h2>
+      <p class="section-sub reveal">The intersection of physical modeling, production systems, and machine intelligence.</p>
+
+      <div class="stack-grid">
+
+        <div class="stack-card reveal">
+          <span class="stack-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0z"/>
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+            </svg>
+          </span>
+          <h3>Physics & Simulation</h3>
+          <p>First-principles modeling is the foundation. I write the physical equations before I write the code.</p>
+          <div class="tag-list">
+            <span class="tag accent">pvlib</span>
+            <span class="tag accent">Solar Geometry</span>
+            <span class="tag accent">Power Flow</span>
+            <span class="tag accent">Electrical Graph</span>
+            <span class="tag accent">Synthetic Data Gen</span>
+            <span class="tag accent">GR · QM</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <span class="stack-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-10 5 10 5 10-5-10-5Z"/>
+              <path d="m2 17 10 5 10-5"/>
+              <path d="m2 12 10 5 10-5"/>
+            </svg>
+          </span>
+          <h3>AI & Agentic Systems</h3>
+          <p>LLM agents that reason over real sensor data. Not chatbots — reasoning engines grounded in physical telemetry.</p>
+          <div class="tag-list">
+            <span class="tag blue">LangGraph</span>
+            <span class="tag blue">Multi-Agent</span>
+            <span class="tag blue">RAG</span>
+            <span class="tag blue">Time-Series ML</span>
+            <span class="tag blue">Physics-Informed ML</span>
+            <span class="tag blue">InfluxDB</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="8" x="2" y="2" rx="2"/>
+              <rect width="20" height="8" x="2" y="14" rx="2"/>
+              <line x1="6" x2="6.01" y1="6" y2="6"/>
+              <line x1="6" x2="6.01" y1="18" y2="18"/>
+              <line x1="10" x2="14" y1="6" y2="6"/>
+              <line x1="10" x2="14" y1="18" y2="18"/>
+            </svg>
+          </span>
+          <h3>Infrastructure & Systems</h3>
+          <p>Production-grade backend that handles real-time data, async pipelines, and multi-user concurrency.</p>
+          <div class="tag-list">
+            <span class="tag green">FastAPI</span>
+            <span class="tag green">PostgreSQL</span>
+            <span class="tag green">SQLAlchemy</span>
+            <span class="tag green">WebSockets</span>
+            <span class="tag green">Docker / AKS</span>
+            <span class="tag green">MinIO</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <span class="stack-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="3" rx="2"/>
+              <line x1="8" x2="16" y1="21" y2="21"/>
+              <line x1="12" x2="12" y1="17" y2="21"/>
+            </svg>
+          </span>
+          <h3>Frontend & Visualization</h3>
+          <p>Interfaces built for operators who need physical insight, not dashboards that look good in demos.</p>
+          <div class="tag-list">
+            <span class="tag">React</span>
+            <span class="tag">Three.js</span>
+            <span class="tag">React Flow</span>
+            <span class="tag">Digital Twin</span>
+            <span class="tag">3D Plant Builder</span>
+            <span class="tag">Grafana</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <span class="stack-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m16.2 7.8-8.4 8.4"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </span>
+          <h3>Computer Vision & Remote Sensing</h3>
+          <p>Processing satellite and drone imagery for physical asset inspection and mapping.</p>
+          <div class="tag-list">
+            <span class="tag">SAM 2</span>
+            <span class="tag">WorldView</span>
+            <span class="tag">Rooftop Detection</span>
+            <span class="tag">RTX 4060</span>
+            <span class="tag">Async Pipelines</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <span class="stack-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12h6"/>
+              <path d="M4 20h16"/>
+              <path d="M4 4h16"/>
+              <path d="M7 4v16"/>
+              <path d="M17 4v16"/>
+            </svg>
+          </span>
+          <h3>Mathematical Reasoning</h3>
+          <p>Comfortable with the deep math underlying physical systems — from information theory to differential geometry.</p>
+          <div class="tag-list">
+            <span class="tag accent">Tensor Calculus</span>
+            <span class="tag accent">Info Theory</span>
+            <span class="tag accent">Kolmogorov Complexity</span>
+            <span class="tag accent">Combinatorics</span>
+            <span class="tag accent">Group Theory</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-label reveal">Experience</div>
+      <h2 class="section-title reveal">Where I've Shipped</h2>
+
+      <div class="work-list">
+
+        <div class="work-item reveal">
+          <div class="work-period">2023 — Present</div>
+          <div>
+            <div class="work-role">Founding Software Engineer</div>
+            <div class="work-company">TerraNxt · ScadaNXT Platform · Gurgaon, India</div>
+            <div class="work-desc">
+              Built the entire ScadaNXT solar SCADA and operational intelligence platform from scratch. Authored physics-based synthetic data generation, a power flow engine with electrical graph traversal, a five-node LangGraph multi-agent system over InfluxDB telemetry, a 3D digital twin plant builder in Three.js, and a React Flow topology editor. Sole engineer responsible from architecture to deployment.
+            </div>
+            <div class="tag-list" style="margin-top:1rem">
+              <span class="tag green">FastAPI</span><span class="tag blue">LangGraph</span><span class="tag accent">pvlib</span><span class="tag">InfluxDB</span><span class="tag">React</span><span class="tag">Three.js</span><span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="work-badge">Full Stack</div>
+        </div>
+
+        <div class="work-item reveal">
+          <div class="work-period">2021 — 2023</div>
+          <div>
+            <div class="work-role">Research Scientist · Lead Product Engineer</div>
+            <div class="work-company">Smarttrak AI</div>
+            <div class="work-desc">
+              Research and product engineering at an AI company. Combined scientific research methodology with production engineering — a pattern that defines the current trajectory.
+            </div>
+          </div>
+          <div class="work-badge">Research + Eng</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label reveal">Projects</div>
+      <h2 class="section-title reveal">Things Built From First Principles</h2>
+      <p class="section-sub reveal">Production systems where physical understanding was the engineering advantage.</p>
+
+      <div class="projects-grid">
+
+        <div class="project-card featured reveal">
+          <div>
+            <div class="project-label">Flagship · Production</div>
+            <h3>ScadaNXT — Solar SCADA & Operational Intelligence</h3>
+            <p>
+              A full B2B solar monitoring and intelligence platform for utility-scale and rooftop solar assets. The platform ingests real sensor telemetry, models degradation against physical baselines, and exposes a conversational LLM interface for plant operators to query their own data in natural language.
+            </p>
+            <p>
+              Architecture: LangGraph multi-agent graph (router → dashboard → fetcher → analyst → synthesizer) over live InfluxDB time-series data, via a FastAPI WebSocket backend and a React frontend.
+            </p>
+            <div class="tag-list">
+              <span class="tag blue">LangGraph</span><span class="tag green">FastAPI</span><span class="tag accent">Physics Modeling</span><span class="tag">InfluxDB</span><span class="tag">React</span><span class="tag">WebSocket</span><span class="tag">Docker</span>
+            </div>
+          </div>
+          <div class="project-physics">
+            <div class="label">Physics Engine</div>
+            <div>PR = E_gen / (G_poa × P_nom / G_stc)</div>
+            <div style="margin-top:0.5rem; color: var(--muted);">Custom solar geometry model</div>
+            <div>θ_z = arccos(cos φ cos δ cos ω + sin φ sin δ)</div>
+            <div style="margin-top:0.5rem; color: var(--muted);">Electrical graph traversal</div>
+            <div>P_loss = Σ I²R across {strings, combiners, inverters}</div>
+            <div style="margin-top:0.5rem; color: var(--muted);">Inverter efficiency surface</div>
+            <div>η(P, T) = f(P_dc/P_dcₒ, T_amb, V_dc)</div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">Computer Vision · Geospatial</div>
+          <h3>Rooftop Detection Pipeline</h3>
+          <p>
+            Satellite imagery segmentation using SAM 2 on WorldView commercial imagery to detect and measure rooftop solar potential at scale. GPU-accelerated inference on RTX 4060 Laptop with async processing pipeline feeding PostgreSQL.
+          </p>
+          <div class="tag-list">
+            <span class="tag blue">SAM 2</span><span class="tag">WorldView</span><span class="tag green">RTX 4060</span><span class="tag">Geospatial</span><span class="tag">Async</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">SaaS · Production</div>
+          <h3>Mighty Resume</h3>
+          <p>
+            Production SaaS (mightyresume.in) with GPT-4o-mini ATS scoring for resumes. Deployed on Azure Kubernetes Service with GitHub Actions CI/CD, cert-manager TLS, and nginx ingress. Full engineering ownership from code to cloud.
+          </p>
+          <div class="tag-list">
+            <span class="tag">AKS</span><span class="tag green">CI/CD</span><span class="tag blue">GPT-4o-mini</span><span class="tag">nginx</span><span class="tag">cert-manager</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-label">3D Visualization</div>
+          <h3>Digital Twin Plant Builder</h3>
+          <p>
+            3D solar plant builder in Three.js with drag-and-drop asset placement, real-time PostgreSQL mutations via SQLAlchemy, and a React Flow topology editor for electrical graph configuration. Built for operators to model their physical plants digitally before commissioning.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Three.js</span><span class="tag">React Flow</span><span class="tag green">PostgreSQL</span><span class="tag accent">Digital Twin</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THINKING -->
+  <section id="thinking">
+    <div class="container">
+      <div class="section-label reveal">Intellectual Interests</div>
+      <h2 class="section-title reveal">How I Think About the World</h2>
+      <p class="section-sub reveal">Physics isn't a credential — it's an epistemic framework. These are the domains that shape how I approach engineering problems.</p>
+
+      <div class="thinking-grid">
+
+        <div class="thought-card reveal" data-index="01">
+          <h3>General Relativity & Curved Spacetime</h3>
+          <p>The Einstein field equations as a constraint on geometry. I'm comfortable with the stress-energy tensor, gravitoelectromagnetic formulations, and the Aichelburg–Sexl ultraboost. Physics at this depth changes how you think about approximations in engineering.</p>
+        </div>
+
+        <div class="thought-card reveal" data-index="02">
+          <h3>AGI & the Physics of Intelligence</h3>
+          <p>Scaling laws as empirical physics of a new kind. The question of whether intelligence emergence is substrate-neutral — and what that implies for how we build systems — sits at the intersection of information theory and long-horizon civilizational thinking.</p>
+        </div>
+
+        <div class="thought-card reveal" data-index="03">
+          <h3>Information Theory & Complexity</h3>
+          <p>Kolmogorov complexity, combinatorial entropy via group theory, and the deep connection between compression and physical law. Information-theoretic reasoning is underused in engineering and overused in hype — I try to tell the difference.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner reveal">
+        <div class="section-label" style="justify-content:center">Open to Opportunities</div>
+        <h2>Let's Build Something<br /><em>Real.</em></h2>
+        <p>
+          I'm actively looking for roles at the intersection of physical systems, AI, and genuine engineering ambition — frontier labs, deep-tech companies, energy/aerospace infrastructure. If you're working on something that requires understanding the physics, not just the API, reach out.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:mubashshir12uddin@gmail.com" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </a>
+          <a href="https://github.com/pitabread7022" target="_blank" rel="noopener" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/m-uddin" target="_blank" rel="noopener" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://pitabread7022.github.io/resume.pdf" target="_blank" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Resume
+          </a>
+          <a href="https://x.com/u_mubashshir" target="_blank" rel="noopener" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20L20 4"/></svg>
+            Twitter / X
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Mubashshir · <a href="mailto:mubashshir12uddin@gmail.com" style="color:var(--muted);text-decoration:none;">mubashshir12uddin@gmail.com</a></p>
+      <p>Physics + Aerospace · IIT Kanpur · Building AI for Physical Infrastructure</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger children in the same parent
+          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
