@@ -1,1363 +1,430 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO -->
-  <title>Mubashshir | Physics-Trained Engineer · AI for Physical Infrastructure</title>
-  <meta name="description" content="Mubashshir — IIT Kanpur physicist and aerospace engineer building AI systems for the physical world. Solar SCADA, physics-informed ML, LLM agents over real sensor data." />
-  <meta name="keywords" content="physics informed machine learning, AI for physical infrastructure, solar SCADA engineer, LangGraph multi-agent systems, IIT Kanpur aerospace, energy AI engineer, physics trained software engineer, founding engineer AI" />
-  <meta name="author" content="Mubashshir" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://pitabread7022.github.io/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mubashshir · Physics-Trained Engineer Building AI for Physical Infrastructure" />
-  <meta property="og:description" content="IIT Kanpur Physics & Aerospace. Building production AI systems where physical reality meets machine intelligence — solar energy, sensor telemetry, agentic reasoning." />
-  <meta property="og:url" content="https://pitabread7022.github.io/" />
-  <meta property="og:image" content="https://pitabread7022.github.io/og-image.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mubashshir · Physics-Trained Engineer" />
-  <meta name="twitter:description" content="Building AI systems for physical infrastructure. IIT Kanpur Physics + Aerospace. Solar SCADA, LLM agents, physics-informed ML." />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mubashshir",
-    "jobTitle": "Physics-Trained Engineer | AI for Physical Infrastructure",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "IIT Kanpur"
-    },
-    "knowsAbout": [
-      "Physics-Informed Machine Learning",
-      "Solar Energy Systems",
-      "SCADA Systems",
-      "LangGraph Multi-Agent AI",
-      "Aerospace Engineering",
-      "General Relativity",
-      "Time-Series Forecasting"
-    ],
-    "url": "https://pitabread7022.github.io/",
-    "sameAs": [
-      "https://github.com/pitabread7022",
-      "https://linkedin.com/in/m-uddin",
-      "https://x.com/u_mubashshir"
-    ]
-  }
-  </script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── TOKENS ── */
-    :root {
-      --bg:        #080a0f;
-      --surface:   #0d1117;
-      --border:    rgba(255,255,255,0.07);
-      --border-hi: rgba(255,255,255,0.15);
-      --text:      #e8e6e0;
-      --muted:     #6b7280;
-      --accent:    #c8a96e;       /* warm gold — physics/brass instrument energy */
-      --accent2:   #4a9eff;       /* cold blue — computation */
-      --accent3:   #7fffb2;       /* signal green — live data */
-      --glow:      rgba(200,169,110,0.12);
-      --ff-display: 'Playfair Display', Georgia, serif;
-      --ff-mono:    'DM Mono', 'Courier New', monospace;
-      --ff-body:    'DM Sans', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--ff-body);
-      font-size: 16px;
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection { background: var(--accent); color: #000; }
-
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.35;
-    }
-
-    /* ── GRID BACKGROUND ── */
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── LAYOUT ── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    section { padding: 7rem 0; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid transparent;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(0px);
-    }
-
-    nav.scrolled {
-      background: rgba(8,10,15,0.92);
-      border-bottom-color: var(--border);
-      backdrop-filter: blur(20px);
-    }
-
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--ff-mono);
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--ff-mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 0 4rem;
-      position: relative;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-tag {
-      font-family: var(--ff-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-
-    .hero-tag::before {
-      content: '';
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    h1.hero-name {
-      font-family: var(--ff-display);
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.35s forwards;
-    }
-
-    h1.hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-descriptor {
-      font-size: 1.15rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
-    }
-
-    .hero-descriptor strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.65s forwards;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      font-family: var(--ff-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      font-weight: 500;
-    }
-
-    .btn-primary:hover {
-      background: #e0bf80;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-hi);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Hero right — physics terminal */
-    .hero-visual {
-      opacity: 0;
-      animation: fadeIn 1.2s 0.8s forwards;
-    }
-
-    .terminal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,169,110,0.08);
-    }
-
-    .terminal-bar {
-      padding: 0.75rem 1rem;
-      background: rgba(255,255,255,0.03);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-r { background: #ff5f57; }
-    .dot-y { background: #febc2e; }
-    .dot-g { background: #28c840; }
-
-    .terminal-title {
-      font-family: var(--ff-mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-left: auto;
-      margin-right: auto;
-      letter-spacing: 0.05em;
-    }
-
-    .terminal-body {
-      padding: 1.5rem;
-      font-family: var(--ff-mono);
-      font-size: 0.78rem;
-      line-height: 2;
-    }
-
-    .t-comment { color: var(--muted); }
-    .t-key { color: var(--accent2); }
-    .t-val { color: var(--accent3); }
-    .t-str { color: var(--accent); }
-    .t-num { color: #f9826c; }
-    .t-section { color: var(--text); font-weight: 500; }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 1em;
-      background: var(--accent3);
-      vertical-align: text-bottom;
-      animation: blink 1s step-end infinite;
-    }
-
-    /* ── SECTION HEADERS ── */
-    .section-label {
-      font-family: var(--ff-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 80px;
-    }
-
-    h2.section-title {
-      font-family: var(--ff-display);
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 3.5rem;
-      font-size: 1.05rem;
-    }
-
-    /* ── ABOUT ── */
-    #about { border-top: 1px solid var(--border); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      font-size: 1.05rem;
-      line-height: 1.9;
-    }
-
-    .about-text p strong { color: var(--text); font-weight: 500; }
-
-    .about-text .pull-quote {
-      font-family: var(--ff-display);
-      font-style: italic;
-      font-size: 1.4rem;
-      color: var(--text);
-      border-left: 2px solid var(--accent);
-      padding: 0.5rem 0 0.5rem 1.5rem;
-      margin: 2rem 0;
-      line-height: 1.5;
-    }
-
-    .credential-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .credential {
-      padding: 1.25rem 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-
-    .credential:hover { border-color: var(--border-hi); }
-
-    .credential::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--accent);
-    }
-
-    .credential-label {
-      font-family: var(--ff-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .credential-value {
-      font-size: 0.95rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── SKILLS / STACK ── */
-    #stack { border-top: 1px solid var(--border); }
-
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .stack-card {
-      padding: 2rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stack-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--glow);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .stack-card:hover {
-      border-color: rgba(200,169,110,0.3);
-      transform: translateY(-3px);
-    }
-
-    .stack-card:hover::after { opacity: 1; }
-
-    .stack-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .stack-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .stack-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .tag {
-      font-family: var(--ff-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      padding: 0.25rem 0.6rem;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    .tag.accent { border-color: rgba(200,169,110,0.3); color: var(--accent); background: rgba(200,169,110,0.06); }
-    .tag.blue   { border-color: rgba(74,158,255,0.3);  color: var(--accent2); background: rgba(74,158,255,0.06); }
-    .tag.green  { border-color: rgba(127,255,178,0.3); color: var(--accent3); background: rgba(127,255,178,0.06); }
-
-    /* ── WORK ── */
-    #work { border-top: 1px solid var(--border); }
-
-    .work-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .work-item {
-      display: grid;
-      grid-template-columns: 160px 1fr auto;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-      transition: all 0.2s;
-    }
-
-    .work-item:hover .work-role { color: var(--accent); }
-
-    .work-period {
-      font-family: var(--ff-mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      padding-top: 0.2rem;
-    }
-
-    .work-role {
-      font-family: var(--ff-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-      transition: color 0.2s;
-    }
-
-    .work-company {
-      font-family: var(--ff-mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.05em;
-    }
-
-    .work-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .work-badge {
-      font-family: var(--ff-mono);
-      font-size: 0.65rem;
-      padding: 0.3rem 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
-      white-space: nowrap;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* ── PROJECTS ── */
-    #projects { border-top: 1px solid var(--border); }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      padding: 2rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .project-card.featured {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .project-card:hover {
-      border-color: var(--border-hi);
-      transform: translateY(-2px);
-    }
-
-    .project-label {
-      font-family: var(--ff-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .project-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-    }
-
-    .project-physics {
-      font-family: var(--ff-mono);
-      font-size: 0.78rem;
-      color: var(--accent3);
-      padding: 1rem;
-      background: rgba(127,255,178,0.04);
-      border: 1px solid rgba(127,255,178,0.12);
-      border-radius: 2px;
-      line-height: 1.9;
-    }
-
-    .project-physics .label {
-      color: var(--muted);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    /* ── THINKING ── */
-    #thinking { border-top: 1px solid var(--border); }
-
-    .thinking-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .thought-card {
-      padding: 1.75rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      transition: border-color 0.3s;
-      position: relative;
-    }
-
-    .thought-card::before {
-      content: attr(data-index);
-      position: absolute;
-      top: 1.25rem;
-      right: 1.5rem;
-      font-family: var(--ff-display);
-      font-size: 3rem;
-      font-weight: 900;
-      color: rgba(255,255,255,0.03);
-      line-height: 1;
-    }
-
-    .thought-card:hover { border-color: var(--border-hi); }
-
-    .thought-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      font-style: italic;
-      color: var(--text);
-    }
-
-    .thought-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      border-top: 1px solid var(--border);
-      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,169,110,0.06) 0%, transparent 70%);
-    }
-
-    .contact-inner {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .contact-inner h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-
-    .contact-inner h2 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .contact-inner p {
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      font-size: 1.05rem;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: var(--ff-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 0.75rem 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      transition: all 0.25s;
-      text-transform: uppercase;
-    }
-
-    .contact-link:hover {
-      color: var(--accent);
-      border-color: rgba(200,169,110,0.4);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-    }
-
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      font-family: var(--ff-mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* ── DIVIDER ── */
-    .physics-divider {
-      text-align: center;
-      padding: 3rem 0;
-      font-family: var(--ff-mono);
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.06);
-      letter-spacing: 0.3em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    /* scroll-reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-inner      { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-visual     { display: none; }
-      .about-grid      { grid-template-columns: 1fr; gap: 3rem; }
-      .stack-grid      { grid-template-columns: 1fr; }
-      .thinking-grid   { grid-template-columns: 1fr; }
-      .projects-grid   { grid-template-columns: 1fr; }
-      .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; gap: 1.5rem; }
-      .work-item       { grid-template-columns: 1fr; gap: 0.5rem; }
-      .work-badge      { display: none; }
-      .nav-links       { display: none; }
-    }
-    /* Add this under your existing about styles inside <style> */
-    .profile-photo {
-      width: 50%;
-      height: auto;
-      max-width: 320px; /* Adjust to preferred maximum width */
-      border-radius: 4px;
-      border: 1px solid var(--border-hi);
-      display: block;
-      object-fit: cover;
-    }
-
-    .image-placeholder {
-      width: 100%;
-      max-width: 320px;
-      height: 320px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      gap: 0.5rem;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mubashshir Uddin — Deep Learning Engineer | Solar AI, Computer Vision, Digital Twins</title>
+<meta name="description" content="Mubashshir Uddin, deep learning engineer in Gurgaon. AI for solar plants, satellite imagery and digital twins. IIT Kanpur. Open to opportunities.">
+<meta property="og:title" content="Mubashshir Uddin — Deep Learning Engineer">
+<meta property="og:description" content="Solar SCADA, satellite vision, digital twins. IIT Kanpur physics and aerospace. Open to opportunities.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pitabread7022.github.io/">
+<meta property="og:image" content="https://pitabread7022.github.io/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mubashshir Uddin — Deep Learning Engineer">
+<meta name="twitter:description" content="AI for solar plants, satellite imagery and digital twins.">
+<meta name="twitter:image" content="https://pitabread7022.github.io/og-image.png">
+<link rel="canonical" href="https://pitabread7022.github.io/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Mubashshir Uddin">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#05060d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","url":"https://pitabread7022.github.io/","mainEntity":{"@type":"Person","name":"Mubashshir Uddin","jobTitle":"Deep Learning Engineer","description":"Deep learning engineer building AI for solar plants, satellite imagery and digital twins.","url":"https://pitabread7022.github.io/","worksFor":{"@type":"Organization","name":"TerraNxt"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Kanpur"},"homeLocation":{"@type":"Place","name":"Agra, India"},"address":{"@type":"PostalAddress","addressLocality":"Gurgaon","addressCountry":"IN"},"knowsAbout":["Deep learning","Computer vision","Physics-informed neural networks","Solar energy","SCADA","Digital twins","Satellite imagery","LLM agents","Kubernetes"],"sameAs":["https://github.com/pitabread7022","https://linkedin.com/in/m-uddin","https://mightyresume.in"]}}</script>
+<script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05060d;--bg2:rgba(22,26,69,.5);--aur:#6ff2ff;--lil:#b9a6ff;--gold:#ffd89a;--text:#e9ecff;--soft:#cfd3f3;--mut:#9aa0c8;--line:rgba(185,166,255,.2);--glass:rgba(14,17,40,.6);--btn:#05060d;--d:'Syne',system-ui,sans-serif;--b:'Hanken Grotesk',system-ui,sans-serif}
+[data-theme=light]{--bg:#f7f6ff;--bg2:rgba(185,166,255,.14);--aur:#0a86a0;--lil:#6444e0;--gold:#a85d00;--text:#14163a;--soft:#2b2e57;--mut:#5b5f8a;--line:rgba(60,50,150,.2);--glass:rgba(255,255,255,.7);--btn:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font:17px/1.65 var(--b);overflow-x:hidden;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(60% 50% at 80% 0,color-mix(in srgb,var(--aur) 14%,transparent),transparent 70%),radial-gradient(70% 60% at 8% 45%,color-mix(in srgb,var(--lil) 16%,transparent),transparent 70%),radial-gradient(70% 50% at 65% 100%,color-mix(in srgb,var(--gold) 12%,transparent),transparent 70%)}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--aur);outline-offset:3px;border-radius:6px}
+::selection{background:var(--lil);color:#fff}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--aur),var(--lil),var(--gold));z-index:50}
+nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px clamp(16px,4vw,52px);backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+.mark{font:800 18px var(--d);text-decoration:none}
+nav ul{display:flex;gap:clamp(12px,2.4vw,28px);list-style:none;align-items:center}
+nav a.l{text-decoration:none;color:var(--mut);font-size:15px}nav a.l:hover{color:var(--aur)}
+.ic{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:7px 13px;font-size:14px;transition:transform .2s,border-color .2s}
+.ic:hover{border-color:var(--aur);transform:translateY(-1px)}
+kbd{font:12px var(--b);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--mut)}
+@media(max-width:760px){nav ul li.hm{display:none}}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px clamp(20px,7vw,110px) 70px;isolation:isolate}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hc{max-width:900px}
+.hi{color:var(--aur);margin-bottom:18px;opacity:0;animation:up 1s .2s forwards}
+h1{font:800 clamp(40px,8vw,100px)/1.02 var(--d);letter-spacing:-.025em;opacity:0;animation:up 1.2s .4s forwards}
+.grad{background:linear-gradient(100deg,var(--aur),var(--lil) 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{font:600 clamp(20px,3vw,32px)/1.3 var(--d);margin-top:22px;min-height:1.4em;opacity:0;animation:up 1s .8s forwards}
+.type b{font-weight:600;color:var(--aur)}.caret{display:inline-block;width:2px;height:1em;background:var(--aur);margin-left:3px;vertical-align:-.12em;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.lede{max-width:580px;margin-top:22px;color:var(--soft);opacity:0;animation:up 1s 1s forwards}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;opacity:0;animation:up 1s 1.2s forwards}
+.btn{padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--line);background:transparent}
+.btn.p{background:linear-gradient(100deg,var(--aur),var(--lil));color:var(--btn);border-color:transparent;box-shadow:0 0 30px color-mix(in srgb,var(--aur) 35%,transparent)}
+.btn:hover{transform:translateY(-2px)}
+.hint{position:absolute;right:clamp(18px,5vw,60px);bottom:26px;color:var(--mut);font-size:13px;text-align:right}
+.s{padding:clamp(64px,10vw,130px) clamp(20px,7vw,110px)}.w{max-width:1100px;margin:0 auto}
+h2{font:700 clamp(30px,5vw,56px)/1.08 var(--d);letter-spacing:-.02em;max-width:820px}
+.sub{color:var(--mut);max-width:640px;margin-top:16px}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,6vw,80px);margin-top:44px;align-items:start}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.pr p{color:var(--soft);max-width:62ch}.pr p+p{margin-top:1.1em}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{padding:22px;border-radius:22px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(8px)}
+.stat:nth-child(2){border-radius:22px 22px 4px 22px}.stat:nth-child(3){border-radius:22px 4px 22px 22px}
+.stat b{display:block;font:800 clamp(28px,3.6vw,42px)/1 var(--d)}.stat span{font-size:14px;color:var(--mut)}
+.stat:nth-child(1) b{color:var(--aur)}.stat:nth-child(2) b{color:var(--lil)}.stat:nth-child(3) b{color:var(--gold)}.stat:nth-child(4) b{color:var(--text)}
+.tl{margin-top:48px;border-left:2px solid var(--line);padding-left:clamp(18px,3vw,36px)}
+.it{position:relative;margin-bottom:34px}
+.it::before{content:"";position:absolute;left:calc(-1*clamp(18px,3vw,36px) - 7px);top:8px;width:12px;height:12px;border-radius:50%;background:var(--aur);box-shadow:0 0 16px var(--aur)}
+.when{font-size:14px;color:var(--aur)}.it h3{font:700 clamp(21px,2.6vw,28px)/1.2 var(--d);margin:2px 0 4px}
+.it>p{color:var(--soft);max-width:66ch}
+details{margin-top:12px;border:1px solid var(--line);border-radius:14px;background:var(--glass);padding:4px 18px}
+summary{cursor:pointer;padding:10px 0;color:var(--gold);font-weight:600;font-size:15px;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:" +";}details[open] summary::after{content:" −"}
+details ul{padding:0 0 14px 18px;color:var(--soft);font-size:15.5px}details li{margin-top:7px}
+.proj{display:grid;grid-template-columns:minmax(170px,.5fr) 1fr;gap:clamp(14px,4vw,56px);padding:26px 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}.proj h4{font:700 20px/1.25 var(--d)}.proj h4 small{display:block;font:400 14px var(--b);color:var(--aur);margin-top:5px}
+.proj p{color:var(--soft);font-size:16px;max-width:64ch}@media(max-width:700px){.proj{grid-template-columns:1fr}}
+.lab{margin-top:56px}.lab h3{font:700 clamp(22px,2.6vw,30px) var(--d)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.chip{padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:14px}
+.chip[aria-pressed=true]{background:var(--lil);color:#fff;border-color:transparent}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{font-size:13.5px;padding:5px 12px;border-radius:10px;border:1px solid var(--line);background:var(--glass);transition:opacity .3s,transform .3s}
+.tag.off{opacity:.12;transform:scale(.94)}
+.repos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:22px}
+.repo{display:block;padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--glass);text-decoration:none;transition:transform .2s,border-color .2s}
+.repo:hover{transform:translateY(-3px);border-color:var(--aur)}.repo b{font-family:var(--d)}.repo p{font-size:14px;color:var(--mut);margin:6px 0 10px}.repo i{font-style:normal;font-size:13px;color:var(--gold)}
+.cos{background:linear-gradient(180deg,transparent,var(--bg2) 30%,var(--bg2) 70%,transparent)}
+.big{font:700 clamp(24px,3.6vw,42px)/1.2 var(--d);letter-spacing:-.015em;max-width:940px;margin-top:36px}.big span{color:var(--lil)}
+.hum{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(22px,4vw,50px);margin-top:44px}
+.hum h3{font:700 22px var(--d);margin-bottom:8px;color:var(--gold)}.hum p{color:var(--soft);font-size:16px}
+.facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.fact{padding:11px 20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);font-size:15px}
+.end{text-align:center}.end h2,.end .sub{margin-inline:auto}
+.links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+footer{text-align:center;color:var(--mut);font-size:14px;padding:28px 20px 48px;border-top:1px solid var(--line)}
+#pal{position:fixed;inset:0;z-index:60;display:none;align-items:flex-start;justify-content:center;padding-top:14vh;background:rgba(5,6,13,.6);backdrop-filter:blur(6px)}
+#pal.open{display:flex}
+#pbox{width:min(560px,92vw);border-radius:20px;border:1px solid var(--line);background:var(--bg);box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden}
+#pin{width:100%;padding:18px 22px;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--text);font:17px var(--b);outline:0}
+#plist{list-style:none;max-height:50vh;overflow:auto;padding:8px}
+#plist li{padding:11px 14px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;font-size:15px}
+#plist li.sel{background:color-mix(in srgb,var(--lil) 22%,transparent)}#plist small{color:var(--mut)}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);opacity:0;background:var(--text);color:var(--bg);padding:10px 20px;border-radius:999px;font-size:14px;z-index:70;transition:.3s;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:12px;top:-60px;z-index:80;background:var(--lil);color:#fff;padding:10px 16px;border-radius:10px;transition:top .2s}.skip:focus{top:12px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:14px;margin-bottom:18px;opacity:0;animation:up 1s .1s forwards}
+.pill i{width:8px;height:8px;border-radius:50%;background:#3ddc97;animation:pu 2s infinite}
+@keyframes pu{0%{box-shadow:0 0 0 0 rgba(61,220,151,.6)}70%,100%{box-shadow:0 0 0 9px rgba(61,220,151,0)}}
+.qf div{display:grid;grid-template-columns:100px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}.qf div:first-child{border-top:1px solid var(--line)}
+.qf dt{color:var(--gold);font-weight:600;font-size:15px}.qf dd{color:var(--soft);font-size:16px}
+.qf a,.lk{color:var(--aur);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+.fit .chips{margin-top:0}.pitch{padding:24px;border-radius:22px;border:1px solid var(--line);background:var(--glass)}
+.pitch h3{font:700 22px var(--d);color:var(--aur);margin-bottom:8px}.pitch p{color:var(--soft);margin-bottom:16px}
+.cs-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:40px}
+.cs{padding:26px;border-radius:24px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(8px)}.cs:nth-child(odd){border-radius:24px 24px 4px 24px}
+.cs h3{font:700 22px var(--d)}.cs .oc{color:var(--aur);font-size:15px;margin:4px 0 12px}.cs dt{color:var(--gold);font-size:14px;font-weight:600;margin-top:10px}.cs dd{color:var(--soft);font-size:15.5px}.cs a{color:var(--aur)}
+#cv{display:none}
+@media print{body{background:#fff!important}body::before{display:none}body>*:not(#cv){display:none!important}#cv{display:block!important;color:#111;font:10.5pt/1.45 Georgia,'Times New Roman',serif}#cv .n{font:700 22pt Georgia,serif}#cv h4{font:700 11pt Georgia,serif;border-bottom:1px solid #999;margin:12px 0 5px;padding-bottom:2px}#cv p,#cv li{margin:2px 0}#cv ul{padding-left:18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hi,h1,.type,.lede,.cta{opacity:1}}
+</style>
 </head>
-
 <body>
-  <div class="grid-bg"></div>
+<a class="skip" href="#main">Skip to content</a>
+<div id="bar"></div>
+<nav aria-label="Primary">
+  <a class="mark" href="#top">Mubashshir</a>
+  <ul>
+    <li class="hm"><a class="l" href="#hire">Hire me</a></li>
+    <li class="hm"><a class="l" href="#about">About</a></li>
+    <li class="hm"><a class="l" href="#path">Path</a></li>
+    <li class="hm"><a class="l" href="#build">Builds</a></li>
+    <li class="hm"><a class="l" href="#me">Me</a></li>
+    <li><button class="ic" id="pbtn" aria-label="Open command menu">Menu <kbd>Ctrl K</kbd></button></li>
+    <li><button class="ic" id="theme" aria-label="Switch theme">☾</button></li>
+  </ul>
+</nav>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <div class="container">
-      <a href="#" class="nav-logo">M. // Engineer</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<header class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="hc">
+    <p class="pill"><i></i>Open to new opportunities · India, US, EU</p>
+    <p class="hi">Hey there, I’m</p>
+    <h1><span class="grad">Mubashshir</span> Uddin.<span class="sr"> Deep Learning Engineer, Gurgaon, India</span></h1>
+    <p class="type" aria-live="off">I build <b id="typed"></b><span class="caret"></span></p>
+    <p class="lede">Deep learning engineer at TerraNxt, Gurgaon. Physics nerd by training, builder by habit, from Agra originally. This is my little corner of the internet.</p>
+    <div class="cta"><a class="btn p" href="#hire">60-second summary</a><a class="btn" href="#build">See my work</a><a class="btn" href="#contact">Say hi</a></div>
+  </div>
+  <p class="hint">Move to pull the stars. Click to blast them away.<br><span id="clock"></span></p>
+</header>
+
+<main id="main">
+<section class="s" id="hire"><div class="w">
+  <h2>The 60-second version.</h2>
+  <p class="sub">For recruiters and hiring managers who’d rather skim. Pick what you’re hiring for and I’ll tell you why I fit.</p>
+  <div class="split">
+    <dl class="qf">
+      <div><dt>Role</dt><dd>Deep Learning Engineer at TerraNxt (Nov 2025 to now). Before that, Smarttrak AI.</dd></div>
+      <div><dt>Where</dt><dd>Gurgaon, India. Open to relocating to the US or EU.</dd></div>
+      <div><dt>Best at</dt><dd>Taking a physics-grounded AI idea all the way to a deployed, monitored system.</dd></div>
+      <div><dt>Core stack</dt><dd>Python, PyTorch, CUDA, LangGraph, FastAPI, React, Kubernetes, InfluxDB</dd></div>
+      <div><dt>Education</dt><dd>IIT Kanpur. B.S. Physics, B.Tech Aerospace (second major).</dd></div>
+      <div><dt>Reach me</dt><dd><a class="mailme" href="#contact">Email</a> · <a href="https://linkedin.com/in/m-uddin" rel="noopener noreferrer">LinkedIn</a> · <button class="lk" data-resume>Résumé</button></dd></div>
+    </dl>
+    <div class="fit">
+      <div class="chips" role="group" aria-label="What are you hiring for?" id="fitchips"></div>
+      <div class="pitch" id="pitch" aria-live="polite"></div>
     </div>
-  </nav>
+  </div>
+</div></section>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <div class="hero-tag">Physics + Engineering + AI</div>
-          <h1 class="hero-name">
-            Building AI for the<br /><em>Physical World.</em>
-          </h1>
-          <p class="hero-descriptor">
-            <strong>IIT Kanpur · Physics & Aerospace Engineering.</strong><br />
-            I build production AI systems that reason about physical reality — solar energy infrastructure, sensor telemetry, simulation engines, and agentic intelligence over real-world data.
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">See the Work</a>
-            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="dot dot-r"></span>
-              <span class="dot dot-y"></span>
-              <span class="dot dot-g"></span>
-              <span class="terminal-title">profile.json</span>
-            </div>
-            <div class="terminal-body">
-              <div class="t-comment">// physics-trained engineer</div>
-              <div>{</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-str">"Mubashshir"</span>,</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"foundation"</span>: [</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Physics"</span>, <span class="t-str">"Aerospace Eng"</span></div>
-              <div>&nbsp;&nbsp;],</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"alma_mater"</span>: <span class="t-str">"IIT Kanpur"</span>,</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"builds"</span>: <span class="t-str">"AI × Physical Systems"</span>,</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"current"</span>: <span class="t-str">"ScadaNXT · Solar SCADA"</span>,</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"domains"</span>: [</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Physics-Informed ML"</span>,</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"LLM Agents"</span>,</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Energy Infrastructure"</span>,</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Time-Series Forecasting"</span></div>
-              <div>&nbsp;&nbsp;],</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"interest_in"</span>: [</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"General Relativity"</span>,</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"AGI"</span>, <span class="t-str">"Quantum Mechanics"</span></div>
-              <div>&nbsp;&nbsp;],</div>
-              <div>&nbsp;&nbsp;<span class="t-key">"open_to"</span>: <span class="t-val">true</span></div>
-              <div>} <span class="cursor"></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="s" id="about"><div class="w">
+  <h2>I like understanding how things work, then making them work better.</h2>
+  <div class="split">
+    <div class="pr">
+      <p>I did Physics and Aerospace Engineering at IIT Kanpur, which mostly taught me one thing: write down the physics first, then let the AI fill in what the equations can’t. That’s still how I work.</p>
+      <p>These days I spend my time on solar plants. I built the monitoring backbone that watches dozens of sites live, the simulations that tell us how a plant <em>should</em> be performing, and the 3D and VR twins that let you walk around one without leaving your desk.</p>
+      <p>Outside of work I fall down rabbit holes about relativity, information theory and where AGI might be heading. Agra is home, Gurgaon is where I build, and I’m open to moving to the US or EU for the right adventure.</p>
     </div>
-  </section>
-
-  <div class="physics-divider">G_μν + Λg_μν = (8πG/c⁴) T_μν</div>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <div class="section-label">About</div>
-          <h2 class="section-title">Where Physics Meets<br />Production Systems</h2>
-          <p>
-            I hold a double major in <strong>Physics and Aerospace Engineering from IIT Kanpur</strong> — one of India's top technical institutions. But my trajectory wasn't toward academia. It was toward the question: <em>what happens when you put first-principles physical thinking inside production software?</em>
-          </p>
-          <div class="pull-quote">
-            "Most engineers simulate. I model the underlying physics and let the simulation follow."
-          </div>
-          <p>
-            As <strong>Founding Software Engineer at TerraNxt</strong>, I built ScadaNXT — a solar SCADA and operational intelligence platform — from the ground up. That meant writing the inverter physics models, the power flow engine, the LLM agents querying live telemetry, and the infrastructure that stitches it all together.
-          </p>
-          <p>
-            I'm interested in roles where the physics isn't decorative — where understanding <strong>degradation curves, thermal dynamics, plasma behavior, or orbital mechanics</strong> is the actual engineering edge.
-          </p>
-        </div>
-
-        <div class="credential-stack reveal">
-          <div class="credential">
-            <div class="credential-label">Education</div>
-            <div class="credential-value">B.Tech · Physics + Aerospace Engineering</div>
-            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">IIT Kanpur</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Current Role</div>
-            <div class="credential-value">Founding Software Engineer</div>
-            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">TerraNxt · ScadaNXT Platform</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Previous</div>
-            <div class="credential-value">Research Scientist · Lead Product Engineer</div>
-            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent);margin-top:0.3rem;">Smarttrak AI</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Location</div>
-            <div class="credential-value">Gurgaon, India · Open to Relocation</div>
-            <div style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent3);margin-top:0.3rem;">US · EU · Remote</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Deep Interests</div>
-            <div class="credential-value">General Relativity · Quantum Mechanics · AGI</div>
-          </div>
-          <div class="about-image">
-            <img src="assets/profile.jpg" alt="Mubashshir - Professional portrait" class="profile-photo" loading="lazy" onerror="this.outerHTML='<div class=\'image-placeholder\'><p>Mubashshir</p></div>'">
-          </div>
-        </div>
-      </div>
+    <div class="stats" id="stats">
+      <div class="stat"><b data-to="24">24</b><span>solar sites monitored live</span></div>
+      <div class="stat"><b data-to="43200">43,200</b><span>data points per second ingested</span></div>
+      <div class="stat"><b data-to="1776">1,776</b><span>buildings in my labelled dataset</span></div>
+      <div class="stat"><b data-to="90" data-suf="%">90%</b><span>functional accuracy, rooftop footprints and heights</span></div>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <!-- STACK -->
-  <section id="stack">
-    <div class="container">
-      <div class="section-label reveal">Technical Stack</div>
-      <h2 class="section-title reveal">What I Build With</h2>
-      <p class="section-sub reveal">The intersection of physical modeling, production systems, and machine intelligence.</p>
-
-      <div class="stack-grid">
-
-        <div class="stack-card reveal">
-          <span class="stack-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0z"/>
-              <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
-            </svg>
-          </span>
-          <h3>Physics & Simulation</h3>
-          <p>First-principles modeling is the foundation. I write the physical equations before I write the code.</p>
-          <div class="tag-list">
-            <span class="tag accent">pvlib</span>
-            <span class="tag accent">Solar Geometry</span>
-            <span class="tag accent">Power Flow</span>
-            <span class="tag accent">Electrical Graph</span>
-            <span class="tag accent">Synthetic Data Gen</span>
-            <span class="tag accent">GR · QM</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <span class="stack-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m12 3-10 5 10 5 10-5-10-5Z"/>
-              <path d="m2 17 10 5 10-5"/>
-              <path d="m2 12 10 5 10-5"/>
-            </svg>
-          </span>
-          <h3>AI & Agentic Systems</h3>
-          <p>LLM agents that reason over real sensor data. Not chatbots — reasoning engines grounded in physical telemetry.</p>
-          <div class="tag-list">
-            <span class="tag blue">LangGraph</span>
-            <span class="tag blue">Multi-Agent</span>
-            <span class="tag blue">RAG</span>
-            <span class="tag blue">Time-Series ML</span>
-            <span class="tag blue">Physics-Informed ML</span>
-            <span class="tag blue">InfluxDB</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="8" x="2" y="2" rx="2"/>
-              <rect width="20" height="8" x="2" y="14" rx="2"/>
-              <line x1="6" x2="6.01" y1="6" y2="6"/>
-              <line x1="6" x2="6.01" y1="18" y2="18"/>
-              <line x1="10" x2="14" y1="6" y2="6"/>
-              <line x1="10" x2="14" y1="18" y2="18"/>
-            </svg>
-          </span>
-          <h3>Infrastructure & Systems</h3>
-          <p>Production-grade backend that handles real-time data, async pipelines, and multi-user concurrency.</p>
-          <div class="tag-list">
-            <span class="tag green">FastAPI</span>
-            <span class="tag green">PostgreSQL</span>
-            <span class="tag green">SQLAlchemy</span>
-            <span class="tag green">WebSockets</span>
-            <span class="tag green">Docker / AKS</span>
-            <span class="tag green">MinIO</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <span class="stack-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="3" rx="2"/>
-              <line x1="8" x2="16" y1="21" y2="21"/>
-              <line x1="12" x2="12" y1="17" y2="21"/>
-            </svg>
-          </span>
-          <h3>Frontend & Visualization</h3>
-          <p>Interfaces built for operators who need physical insight, not dashboards that look good in demos.</p>
-          <div class="tag-list">
-            <span class="tag">React</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">React Flow</span>
-            <span class="tag">Digital Twin</span>
-            <span class="tag">3D Plant Builder</span>
-            <span class="tag">Grafana</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <span class="stack-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="m16.2 7.8-8.4 8.4"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-            </svg>
-          </span>
-          <h3>Computer Vision & Remote Sensing</h3>
-          <p>Processing satellite and drone imagery for physical asset inspection and mapping.</p>
-          <div class="tag-list">
-            <span class="tag">SAM 2</span>
-            <span class="tag">WorldView</span>
-            <span class="tag">Rooftop Detection</span>
-            <span class="tag">RTX 4060</span>
-            <span class="tag">Async Pipelines</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <span class="stack-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12h6"/>
-              <path d="M4 20h16"/>
-              <path d="M4 4h16"/>
-              <path d="M7 4v16"/>
-              <path d="M17 4v16"/>
-            </svg>
-          </span>
-          <h3>Mathematical Reasoning</h3>
-          <p>Comfortable with the deep math underlying physical systems — from information theory to differential geometry.</p>
-          <div class="tag-list">
-            <span class="tag accent">Tensor Calculus</span>
-            <span class="tag accent">Info Theory</span>
-            <span class="tag accent">Kolmogorov Complexity</span>
-            <span class="tag accent">Combinatorics</span>
-            <span class="tag accent">Group Theory</span>
-          </div>
-        </div>
-
-      </div>
+<section class="s" id="path"><div class="w">
+  <h2>The path so far.</h2>
+  <p class="sub">Tap a card to see what I actually did there.</p>
+  <div class="tl">
+    <div class="it"><span class="when">Nov 2025 to now · Gurgaon</span><h3>Deep Learning Engineer, TerraNxt</h3>
+      <p>Building ScadaNXT, an AI-powered SCADA and operational intelligence platform for utility-scale solar, mostly on my own.</p>
+      <details><summary>Rooftops from space</summary><ul><li>Built a 3D small-object detection pipeline for rooftops from 30 cm stereo satellite imagery, reaching 90% functional accuracy on building footprints and heights.</li><li>Labelled a 1,776-building GIS dataset, trained to convergence, and set up a self-hosted multimodal agentic LLM system on an NVIDIA DGX Spark.</li></ul></details>
+      <details><summary>Solar SCADA</summary><ul><li>IoT ingestion for 24 sites at 43,200 data points per second, live.</li><li>PVLIB and PyBaMM simulations to compare real versus ideal plant performance, QR-based datalogger asset mapping, and health models for each time-series stream.</li><li>Production deployment on Kubernetes with CI/CD, plus a RAG chatbot for on-demand KPI analysis from live plant data.</li></ul></details>
+      <details><summary>Drone inspection</summary><ul><li>U-Net and SAM pipeline that turns high-resolution drone imagery into 3D solar plant layouts, with configurable 3D asset generation and a Three.js viewer.</li></ul></details>
     </div>
-  </section>
-
-  <!-- WORK -->
-  <section id="work">
-    <div class="container">
-      <div class="section-label reveal">Experience</div>
-      <h2 class="section-title reveal">Where I've Shipped</h2>
-
-      <div class="work-list">
-
-        <div class="work-item reveal">
-          <div class="work-period">2023 — Present</div>
-          <div>
-            <div class="work-role">Founding Software Engineer</div>
-            <div class="work-company">TerraNxt · ScadaNXT Platform · Gurgaon, India</div>
-            <div class="work-desc">
-              Built the entire ScadaNXT solar SCADA and operational intelligence platform from scratch. Authored physics-based synthetic data generation, a power flow engine with electrical graph traversal, a five-node LangGraph multi-agent system over InfluxDB telemetry, a 3D digital twin plant builder in Three.js, and a React Flow topology editor. Sole engineer responsible from architecture to deployment.
-            </div>
-            <div class="tag-list" style="margin-top:1rem">
-              <span class="tag green">FastAPI</span><span class="tag blue">LangGraph</span><span class="tag accent">pvlib</span><span class="tag">InfluxDB</span><span class="tag">React</span><span class="tag">Three.js</span><span class="tag">PostgreSQL</span>
-            </div>
-          </div>
-          <div class="work-badge">Full Stack</div>
-        </div>
-
-        <div class="work-item reveal">
-          <div class="work-period">2021 — 2023</div>
-          <div>
-            <div class="work-role">Research Scientist · Lead Product Engineer</div>
-            <div class="work-company">Smarttrak AI</div>
-            <div class="work-desc">
-              Research and product engineering at an AI company. Combined scientific research methodology with production engineering — a pattern that defines the current trajectory.
-            </div>
-          </div>
-          <div class="work-badge">Research + Eng</div>
-        </div>
-
-      </div>
+    <div class="it"><span class="when">May 2024 to Nov 2025 · Remote, USA</span><h3>Deep Learning Engineer, Smarttrak AI</h3>
+      <p>Physics-informed models for solar assets, and my first big VR build.</p>
+      <details><summary>What I shipped</summary><ul><li>A PINN-based inverter digital twin for predictive maintenance, with a custom-loss PyTorch framework using LSTMs and autoencoders.</li><li>Short-horizon cloud nowcasting from live NASA Worldview imagery cropped to client sites, with CNN autoencoder cloud classification and feedback-driven retraining.</li><li>A Unity VR digital twin for Meta Quest with modelled assets, textures, time-of-day lighting, live dashboards and AI chat inside the headset.</li></ul></details>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-label reveal">Projects</div>
-      <h2 class="section-title reveal">Things Built From First Principles</h2>
-      <p class="section-sub reveal">Production systems where physical understanding was the engineering advantage.</p>
-
-      <div class="projects-grid">
-
-        <div class="project-card featured reveal">
-          <div>
-            <div class="project-label">Flagship · Production</div>
-            <h3>ScadaNXT — Solar SCADA & Operational Intelligence</h3>
-            <p>
-              A full B2B solar monitoring and intelligence platform for utility-scale and rooftop solar assets. The platform ingests real sensor telemetry, models degradation against physical baselines, and exposes a conversational LLM interface for plant operators to query their own data in natural language.
-            </p>
-            <p>
-              Architecture: LangGraph multi-agent graph (router → dashboard → fetcher → analyst → synthesizer) over live InfluxDB time-series data, via a FastAPI WebSocket backend and a React frontend.
-            </p>
-            <div class="tag-list">
-              <span class="tag blue">LangGraph</span><span class="tag green">FastAPI</span><span class="tag accent">Physics Modeling</span><span class="tag">InfluxDB</span><span class="tag">React</span><span class="tag">WebSocket</span><span class="tag">Docker</span>
-            </div>
-          </div>
-          <div class="project-physics">
-            <div class="label">Physics Engine</div>
-            <div>PR = E_gen / (G_poa × P_nom / G_stc)</div>
-            <div style="margin-top:0.5rem; color: var(--muted);">Custom solar geometry model</div>
-            <div>θ_z = arccos(cos φ cos δ cos ω + sin φ sin δ)</div>
-            <div style="margin-top:0.5rem; color: var(--muted);">Electrical graph traversal</div>
-            <div>P_loss = Σ I²R across {strings, combiners, inverters}</div>
-            <div style="margin-top:0.5rem; color: var(--muted);">Inverter efficiency surface</div>
-            <div>η(P, T) = f(P_dc/P_dcₒ, T_amb, V_dc)</div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-label">Computer Vision · Geospatial</div>
-          <h3>Rooftop Detection Pipeline</h3>
-          <p>
-            Satellite imagery segmentation using SAM 2 on WorldView commercial imagery to detect and measure rooftop solar potential at scale. GPU-accelerated inference on RTX 4060 Laptop with async processing pipeline feeding PostgreSQL.
-          </p>
-          <div class="tag-list">
-            <span class="tag blue">SAM 2</span><span class="tag">WorldView</span><span class="tag green">RTX 4060</span><span class="tag">Geospatial</span><span class="tag">Async</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-label">SaaS · Production</div>
-          <h3>Mighty Resume</h3>
-          <p>
-            Production SaaS (mightyresume.in) with GPT-4o-mini ATS scoring for resumes. Deployed on Azure Kubernetes Service with GitHub Actions CI/CD, cert-manager TLS, and nginx ingress. Full engineering ownership from code to cloud.
-          </p>
-          <div class="tag-list">
-            <span class="tag">AKS</span><span class="tag green">CI/CD</span><span class="tag blue">GPT-4o-mini</span><span class="tag">nginx</span><span class="tag">cert-manager</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-label">3D Visualization</div>
-          <h3>Digital Twin Plant Builder</h3>
-          <p>
-            3D solar plant builder in Three.js with drag-and-drop asset placement, real-time PostgreSQL mutations via SQLAlchemy, and a React Flow topology editor for electrical graph configuration. Built for operators to model their physical plants digitally before commissioning.
-          </p>
-          <div class="tag-list">
-            <span class="tag">Three.js</span><span class="tag">React Flow</span><span class="tag green">PostgreSQL</span><span class="tag accent">Digital Twin</span>
-          </div>
-        </div>
-
-      </div>
+    <div class="it"><span class="when">2019 to 2024 · Kanpur</span><h3>IIT Kanpur</h3>
+      <p>B.S. Physics (2019 to 2023) and B.Tech Aerospace Engineering as a second major (2019 to 2024). Computational Physics, Advanced Mathematical Methods, Probability and Statistics, and plenty of LabVIEW and simulation along the way.</p>
+      <details><summary>Fun bit</summary><ul><li>I got in through JEE Advanced 2019 (rank 4412 out of about 245,000 candidates, in the common rank list).</li></ul></details>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <!-- THINKING -->
-  <section id="thinking">
-    <div class="container">
-      <div class="section-label reveal">Intellectual Interests</div>
-      <h2 class="section-title reveal">How I Think About the World</h2>
-      <p class="section-sub reveal">Physics isn't a credential — it's an epistemic framework. These are the domains that shape how I approach engineering problems.</p>
-
-      <div class="thinking-grid">
-
-        <div class="thought-card reveal" data-index="01">
-          <h3>General Relativity & Curved Spacetime</h3>
-          <p>The Einstein field equations as a constraint on geometry. I'm comfortable with the stress-energy tensor, gravitoelectromagnetic formulations, and the Aichelburg–Sexl ultraboost. Physics at this depth changes how you think about approximations in engineering.</p>
-        </div>
-
-        <div class="thought-card reveal" data-index="02">
-          <h3>AGI & the Physics of Intelligence</h3>
-          <p>Scaling laws as empirical physics of a new kind. The question of whether intelligence emergence is substrate-neutral — and what that implies for how we build systems — sits at the intersection of information theory and long-horizon civilizational thinking.</p>
-        </div>
-
-        <div class="thought-card reveal" data-index="03">
-          <h3>Information Theory & Complexity</h3>
-          <p>Kolmogorov complexity, combinatorial entropy via group theory, and the deep connection between compression and physical law. Information-theoretic reasoning is underused in engineering and overused in hype — I try to tell the difference.</p>
-        </div>
-
-      </div>
+<section class="s" id="build"><div class="w">
+  <h2>Selected work, told as problems and results.</h2>
+  <div class="cs-wrap">
+    <article class="cs"><h3>Solar SCADA, live</h3><p class="oc">24 sites · 43,200 data points per second</p><dl>
+      <dt>Problem</dt><dd>Operators need to see how every plant is really performing against how it should, in real time.</dd>
+      <dt>What I built</dt><dd>IoT ingestion, PVLIB and PyBaMM “ideal plant” baselines, health models per data stream, QR-based datalogger mapping, and a RAG chatbot for KPI questions. Deployed on Kubernetes with CI/CD.</dd>
+      <dt>Result</dt><dd>Live monitoring of 24 sites, with actual versus expected performance side by side.</dd></dl></article>
+    <article class="cs"><h3>Rooftops from space</h3><p class="oc">30 cm stereo imagery · 1,776 buildings</p><dl>
+      <dt>Problem</dt><dd>Small rooftop objects like HVAC units and tanks decide what fits on a roof, and a flat photo can’t show their height.</dd>
+      <dt>What I built</dt><dd>A 3D small-object detection pipeline on stereo satellite pairs, a labelled GIS dataset, and a self-hosted multimodal agentic LLM system on an NVIDIA DGX Spark.</dd>
+      <dt>Result</dt><dd>90% functional accuracy on building footprints and heights.</dd></dl></article>
+    <article class="cs"><h3>Twins you can walk through</h3><p class="oc">PINNs · Unity · Meta Quest · Three.js</p><dl>
+      <dt>Problem</dt><dd>Asset health is hard to see, and plants are hard to visit.</dd>
+      <dt>What I built</dt><dd>A PINN-based inverter twin for predictive maintenance, a Unity VR twin with live dashboards and AI chat, and a U-Net and SAM pipeline that turns drone imagery into 3D plant layouts.</dd>
+      <dt>Result</dt><dd>A physics-informed twin plus a walkable VR plant, fed by live data.</dd></dl></article>
+    <article class="cs"><h3>Mighty Resume</h3><p class="oc">Solo SaaS · <a href="https://mightyresume.in" rel="noopener noreferrer">mightyresume.in</a></p><dl>
+      <dt>Problem</dt><dd>Job seekers rarely know why their resume gets filtered out.</dd>
+      <dt>What I built</dt><dd>An AI analyzer scoring nine ATS-focused dimensions, with free and paid tiers and a payment gateway, on Azure with NGINX ingress, TLS, autoscaling and CI/CD.</dd>
+      <dt>Result</dt><dd>Designed, launched and operated end to end, alone.</dd></dl></article>
+  </div>
+  <div class="lab">
+    <h3>Toolbox</h3>
+    <div class="chips" role="group" aria-label="Filter skills">
+      <button class="chip" data-f="all" aria-pressed="true">Everything</button><button class="chip" data-f="ai" aria-pressed="false">AI and ML</button><button class="chip" data-f="geo" aria-pressed="false">Geo and simulation</button><button class="chip" data-f="xr" aria-pressed="false">3D and XR</button><button class="chip" data-f="data" aria-pressed="false">Data and infra</button>
     </div>
-  </section>
+    <div class="tags" id="tags"></div>
+    <noscript><p class="sub">Python, PyTorch, CUDA, Transformers, LLMs, RAG, AI agents, PINNs, LSTMs, autoencoders, computer vision, OpenCV, YOLOv8, SAM 2, U-Net, PVLIB, PyBaMM, QGIS, Unity, Three.js, OpenSCAD, SQL, Redis, MinIO, Kafka, MQTT, InfluxDB, Grafana, Docker, Kubernetes, CI/CD, NGINX, Linux, Git.</p></noscript>
+  </div>
+  <div class="lab">
+    <h3>Fresh from GitHub</h3>
+    <p class="sub">Pulled live from my public repos when you load the page.</p>
+    <div class="repos" id="repos"><a class="repo" href="https://github.com/pitabread7022"><b>github.com/pitabread7022</b><p>Loading repositories…</p></a></div>
+  </div>
+</div></section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-inner reveal">
-        <div class="section-label" style="justify-content:center">Open to Opportunities</div>
-        <h2>Let's Build Something<br /><em>Real.</em></h2>
-        <p>
-          I'm actively looking for roles at the intersection of physical systems, AI, and genuine engineering ambition — frontier labs, deep-tech companies, energy/aerospace infrastructure. If you're working on something that requires understanding the physics, not just the API, reach out.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:mubashshir12uddin@gmail.com" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email
-          </a>
-          <a href="https://github.com/pitabread7022" target="_blank" rel="noopener" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
-          <a href="https://linkedin.com/in/m-uddin" target="_blank" rel="noopener" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://pitabread7022.github.io/resume.pdf" target="_blank" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Resume
-          </a>
-          <a href="https://x.com/u_mubashshir" target="_blank" rel="noopener" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20L20 4"/></svg>
-            Twitter / X
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="s cos" id="passions"><div class="w">
+  <h2>What I think about when nobody’s asking me to ship.</h2>
+  <p class="big">Physics isn’t a line on my CV, it’s <span>how I see things</span>: spacetime bending around mass, information leaving fingerprints in entropy, and intelligence as something we might one day understand as cleanly as gravity.</p>
+  <div class="facts"><span class="fact">General Relativity</span><span class="fact">Quantum Mechanics</span><span class="fact">Gravitomagnetism</span><span class="fact">Information entropy</span><span class="fact">Kolmogorov complexity</span><span class="fact">Abstract math</span><span class="fact">AGI timelines</span><span class="fact">Futures of civilization</span></div>
+</div></section>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 Mubashshir · <a href="mailto:mubashshir12uddin@gmail.com" style="color:var(--muted);text-decoration:none;">mubashshir12uddin@gmail.com</a></p>
-      <p>Physics + Aerospace · IIT Kanpur · Building AI for Physical Infrastructure</p>
-    </div>
-  </footer>
+<section class="s" id="me"><div class="w">
+  <h2>The human part.</h2>
+  <p class="sub">What it’s like to work with me, minus the buzzwords.</p>
+  <div class="hum">
+    <div><h3>I finish things</h3><p>Idea, prototype, deployed, monitored. I’m happiest when something I built is actually running out in the world.</p></div>
+    <div><h3>I go deep, then wide</h3><p>One week it’s satellite stereo geometry, the next it’s Kubernetes ingress or a VR headset that won’t track the floor. I get a kick out of crossing the gaps.</p></div>
+    <div><h3>I like a good constraint</h3><p>Tight deadline or tight compute? Fine. Constraints make me pick the elegant solution over the expensive one.</p></div>
+    <div><h3>Quietly ambitious</h3><p>I’ve been better at building than announcing. This site is partly me practising being louder about it.</p></div>
+  </div>
+  <div class="facts"><span class="fact">🏠 Home: Agra</span><span class="fact">🛠️ Base: Gurgaon</span><span class="fact">🔭 Rabbit holes: relativity, entropy, AGI</span><span class="fact">⌨️ Press Ctrl K, there’s a menu</span></div>
+</div></section>
 
-  <script>
-    // Nav scroll state
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
+<section class="s cos" id="now"><div class="w">
+  <h2>What I’m up to right now.</h2>
+  <p class="sub">A “now” page, in the spirit of Derek Sivers. Updated October 2026.</p>
+  <div class="hum">
+    <div><h3>Building</h3><p>Pushing stereo rooftop detection further, and teaching an agent to write OpenSCAD models of buildings from satellite crops.</p></div>
+    <div><h3>Thinking about</h3><p>How far physics-informed models can go before you need more data, and what AGI timelines really hinge on.</p></div>
+    <div><h3>Looking for</h3><p>A team applying AI to energy, climate or industrial systems, where the physics actually matters.</p></div>
+  </div>
+</div></section>
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // stagger children in the same parent
-          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
-          const idx = siblings.indexOf(entry.target);
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, idx * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+<section class="s end" id="contact"><div class="w">
+  <h2>Let’s make something strange and useful.</h2>
+  <p class="sub">Solar, satellites, digital twins, physics, or a good argument about AGI. I’d love to hear from you.</p>
+  <div class="links">
+    <a class="btn p" id="mailto" href="#contact">Email me</a>
+    <button class="btn" id="copymail">Copy email</button>
+    <a class="btn" href="https://linkedin.com/in/m-uddin" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/pitabread7022" rel="noopener">GitHub</a>
+    <button class="btn" id="vcf">Save my contact</button>
+    <button class="btn" data-resume>Résumé (PDF)</button>
+  </div>
+</div></section>
+</main>
+<footer><p>© <span id="yr"></span> Mubashshir Uddin · made with caffeine and gravity</p><p style="margin-top:8px"><a href="https://linkedin.com/in/m-uddin" rel="noopener noreferrer">LinkedIn</a> · <a href="https://github.com/pitabread7022" rel="noopener noreferrer">GitHub</a> · <a href="humans.txt">humans.txt</a></p></footer>
 
-    revealEls.forEach(el => observer.observe(el));
+<section id="cv" aria-hidden="true">
+  <div class="n">Mubashshir Uddin</div>
+  <p>Deep Learning Engineer · Gurgaon, India · <span class="cvmail"></span> · linkedin.com/in/m-uddin · github.com/pitabread7022 · mightyresume.in</p>
+  <h4>Experience</h4>
+  <p><b>Deep Learning Engineer, TerraNxt</b> — Nov 2025 to present, Gurgaon</p>
+  <ul><li>3D small-object detection for rooftops from 30 cm stereo satellite imagery; 90% functional accuracy on footprints and heights. Labelled a 1,776-building GIS dataset; set up a self-hosted multimodal agentic LLM system on an NVIDIA DGX Spark.</li>
+  <li>Solar SCADA: IoT ingestion for 24 sites at 43,200 data points per second; PVLIB and PyBaMM actual-versus-ideal baselines; per-stream health models; Kubernetes deployment with CI/CD; RAG chatbot for KPI analysis.</li>
+  <li>Drone inspection: U-Net and SAM pipeline producing 3D solar plant layouts, with a Three.js viewer.</li></ul>
+  <p><b>Deep Learning Engineer, Smarttrak AI</b> — May 2024 to Nov 2025, Remote</p>
+  <ul><li>PINN-based solar inverter digital twin for predictive maintenance (PyTorch, LSTMs, autoencoders).</li>
+  <li>Cloud nowcasting from NASA Worldview imagery with CNN autoencoder classification and feedback-driven retraining.</li>
+  <li>Unity VR digital twin for Meta Quest with live dashboards and AI chat.</li></ul>
+  <h4>Education</h4>
+  <p>IIT Kanpur: B.S. Physics (2019 to 2023); B.Tech Aerospace Engineering, second major (2019 to 2024).</p>
+  <h4>Projects</h4>
+  <p><b>Mighty Resume</b> — solo-built AI resume analyzer (nine ATS dimensions) on Azure with NGINX ingress, TLS, autoscaling, CI/CD, free and paid tiers.</p>
+  <h4>Skills</h4>
+  <p>Python, PyTorch, CUDA, computer vision, LLMs, RAG, agents, PINNs, time series, PVLIB, PyBaMM, QGIS, Unity, Three.js, OpenSCAD, SQL, Redis, MinIO, Kafka, MQTT, InfluxDB, Grafana, Docker, Kubernetes, CI/CD, NGINX, Linux, Git.</p>
+</section>
 
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
+<div id="pal" role="dialog" aria-modal="true" aria-label="Command menu"><div id="pbox"><input id="pin" placeholder="Type a command or section…" autocomplete="off" aria-label="Search commands"><ul id="plist"></ul></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),root=document.documentElement,EMAIL=['mubashshir12uddin','gmail.com'].join('@');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+$('#yr').textContent=new Date().getFullYear();
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200)}
+
+/* theme */
+function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}$('#theme').textContent=t==='dark'?'☾':'☀';document.querySelector('meta[name=theme-color]').content=t==='dark'?'#05060d':'#f7f6ff'}
+setTheme(root.dataset.theme);
+const flip=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+$('#theme').onclick=flip;
+
+/* scroll progress */
+addEventListener('scroll',()=>{const h=root.scrollHeight-innerHeight;$('#bar').style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
+
+/* typed headline */
+(function(){const w=['AI for solar power plants.','eyes that watch from orbit.','digital twins you can walk through.','physics-aware neural networks.','small SaaS that actually ships.'],el=$('#typed');
+if(reduce){el.textContent=w[0];return}let i=0,j=0,del=false;
+(function tick(){const s=w[i];el.textContent=s.slice(0,j);if(!del&&j<s.length){j++;setTimeout(tick,55)}else if(!del){del=true;setTimeout(tick,1700)}else if(j>0){j--;setTimeout(tick,28)}else{del=false;i=(i+1)%w.length;setTimeout(tick,300)}})()})();
+
+/* live clock */
+(function(){const f=new Intl.DateTimeFormat('en-IN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'});
+const u=()=>$('#clock').textContent='Gurgaon right now: '+f.format(new Date());u();setInterval(u,20000)})();
+
+/* count-up stats */
+if(!reduce)document.querySelectorAll('#stats b').forEach(b=>b.textContent='0');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
+ e.target.querySelectorAll('b').forEach(b=>{const to=+b.dataset.to,suf=b.dataset.suf||'',t0=performance.now();
+ (function f(t){const p=reduce?1:Math.min((t-t0)/1400,1);b.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-IN')+suf;if(p<1)requestAnimationFrame(f)})(t0)})}),{threshold:.4});
+io.observe($('#stats'));
+
+/* skills filter */
+const SK=[['Python','ai'],['PyTorch','ai'],['CUDA','ai'],['Transformers','ai'],['LLMs','ai'],['RAG','ai'],['AI agents','ai'],['PINNs','ai'],['LSTMs','ai'],['Autoencoders','ai'],['Time series','ai'],['Computer vision','ai'],['OpenCV','ai'],['YOLOv8','ai'],['SAM 2','ai'],['U-Net','ai'],['ESRGAN','ai'],['NLP','ai'],['PVLIB','geo'],['PyBaMM','geo'],['QGIS','geo'],['NASA Ames Stereo','geo'],['NASA Worldview','geo'],['s2p','geo'],['Unity','xr'],['Meta Quest VR','xr'],['Three.js','xr'],['OpenSCAD','xr'],['SQL','data'],['NoSQL','data'],['SQLAlchemy','data'],['Redis','data'],['MinIO','data'],['Kafka','data'],['MQTT','data'],['WebSocket','data'],['InfluxDB','data'],['Grafana','data'],['Docker','data'],['Kubernetes (AKS)','data'],['CI/CD','data'],['NGINX','data'],['Linux','data'],['Git','data'],['n8n','data']];
+const tg=$('#tags');SK.forEach(([n,c])=>{const s=document.createElement('span');s.className='tag';s.dataset.c=c;s.textContent=n;tg.append(s)});
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ tg.querySelectorAll('.tag').forEach(t=>t.classList.toggle('off',b.dataset.f!=='all'&&t.dataset.c!==b.dataset.f))});
+
+/* live GitHub repos */
+const gh=()=>{try{const c=JSON.parse(sessionStorage.getItem('gh')||'null');if(c)return Promise.resolve(c)}catch(e){}return fetch('https://api.github.com/users/pitabread7022/repos?sort=updated&per_page=12').then(r=>r.ok?r.json():Promise.reject()).then(d=>{try{sessionStorage.setItem('gh',JSON.stringify(d))}catch(e){}return d})};
+gh().then(d=>{
+ const list=d.filter(r=>!r.fork).slice(0,6),box=$('#repos');if(!list.length)throw 0;box.textContent='';
+ list.forEach(r=>{const a=document.createElement('a');a.className='repo';a.href=r.html_url;a.rel='noopener';
+  const b=document.createElement('b');b.textContent=r.name;const p=document.createElement('p');p.textContent=r.description||'No description yet. Mysterious.';
+  const i=document.createElement('i');i.textContent=[r.language,r.stargazers_count?'★ '+r.stargazers_count:''].filter(Boolean).join('  ·  ')||'repo';a.append(b,p,i);box.append(a)})
+}).catch(()=>{$('#repos').innerHTML='<a class="repo" href="https://github.com/pitabread7022"><b>See my GitHub</b><p>Couldn’t load the live list just now. The repos are all at github.com/pitabread7022.</p></a>'});
+
+/* actions: email, vcard */
+const copyMail=()=>{(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(()=>toast('Email copied. Talk soon!')).catch(()=>{location.href='mailto:'+EMAIL})};
+const vcard=()=>{const v='BEGIN:VCARD\nVERSION:3.0\nFN:Mubashshir Uddin\nORG:TerraNxt\nTITLE:Deep Learning Engineer\nEMAIL:'+EMAIL+'\nURL:https://github.com/pitabread7022\nEND:VCARD';
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([v],{type:'text/vcard'}));a.download='Mubashshir-Uddin.vcf';a.click();toast('Contact saved')};
+$('#copymail').onclick=copyMail;$('#vcf').onclick=vcard;
+
+/* résumé, recruiter pitch, mailto */
+let pdf=false;fetch('resume.pdf',{method:'HEAD'}).then(r=>{pdf=r.ok}).catch(()=>{});
+const doResume=()=>{if(pdf){open('resume.pdf','_blank','noopener')}else{toast('Opening print view. Choose “Save as PDF”.');setTimeout(()=>print(),400)}};
+document.querySelectorAll('[data-resume]').forEach(b=>b.onclick=doResume);
+document.querySelectorAll('.cvmail').forEach(e=>e.textContent=EMAIL);
+const MAIL='mailto:'+EMAIL+'?subject='+encodeURIComponent('Hello from your website');
+$('#mailto').href=MAIL;document.querySelectorAll('.mailme').forEach(a=>a.href=MAIL);
+const FIT={ai:['Applied AI and agents','A RAG chatbot over live plant data, a five-agent LangGraph analyst, a self-hosted multimodal agentic LLM setup on an NVIDIA DGX Spark, and an agent that writes OpenSCAD models from satellite images.'],
+cv:['Computer vision and geospatial','3D small-object detection from 30 cm stereo satellite imagery with a 1,776-building labelled dataset, U-Net and SAM pipelines for drone imagery, and cloud nowcasting from NASA Worldview.'],
+tw:['Digital twins and simulation','A PINN-based inverter twin, PVLIB and PyBaMM baselines, power-systems maths like IEC 60909 short-circuit analysis, and walkable Unity VR twins for Meta Quest. Physics first, then ML.'],
+ml:['ML platforms and backend','Live ingestion at 43,200 points per second, InfluxDB and PostgreSQL, FastAPI with WebSockets, React frontends, and Kubernetes with CI/CD. I also run my own SaaS in production.']};
+(function(){const ch=$('#fitchips'),box=$('#pitch'),L={ai:'Applied AI',cv:'Computer vision',tw:'Digital twins',ml:'ML platform'};
+function show(k){ch.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));box.textContent='';
+ const h=document.createElement('h3'),p=document.createElement('p'),a=document.createElement('a');h.textContent=FIT[k][0];p.textContent=FIT[k][1];a.className='btn p';a.textContent='Let’s talk';a.href=MAIL;box.append(h,p,a)}
+Object.keys(L).forEach(k=>{const b=document.createElement('button');b.className='chip';b.dataset.k=k;b.textContent=L[k];b.onclick=()=>show(k);ch.append(b)});show('ai')})();
+
+/* command palette */
+const go=id=>()=>{$(id).scrollIntoView({behavior:reduce?'auto':'smooth'})};
+const CMDS=[['Go to About','section',go('#about')],['Go to Now','section',go('#now')],['Go to Path','section',go('#path')],['Go to Builds','section',go('#build')],['Go to Passions','section',go('#passions')],['Go to The human part','section',go('#me')],['Go to Contact','section',go('#contact')],['Recruiter summary (60 seconds)','section',go('#hire')],['Download résumé','action',doResume],['Toggle light or dark theme','theme',flip],['Copy email','action',copyMail],['Save contact card','action',vcard],['Open LinkedIn','link',()=>open('https://linkedin.com/in/m-uddin','_blank','noopener')],['Open GitHub','link',()=>open('https://github.com/pitabread7022','_blank','noopener')],['Visit Mighty Resume','link',()=>open('https://mightyresume.in','_blank','noopener')],['Flip gravity (attract or repel)','fun',()=>{window.__gravFlip=!window.__gravFlip;toast(window.__gravFlip?'Gravity reversed':'Gravity restored')}]];
+const pal=$('#pal'),pin=$('#pin'),pl=$('#plist');let sel=0,cur=CMDS;
+function render(){pl.innerHTML='';cur.forEach((c,i)=>{const li=document.createElement('li');li.className=i===sel?'sel':'';li.innerHTML='<span></span><small></small>';li.firstChild.textContent=c[0];li.lastChild.textContent=c[1];li.onclick=()=>run(i);pl.append(li)})}
+function run(i){const c=cur[i];if(!c)return;closeP();c[2]()}
+function openP(){pal.classList.add('open');pin.value='';cur=CMDS;sel=0;render();pin.focus()}
+function closeP(){pal.classList.remove('open')}
+pin.oninput=()=>{const q=pin.value.toLowerCase();cur=CMDS.filter(c=>c[0].toLowerCase().includes(q));sel=0;render()};
+pin.onkeydown=e=>{if(e.key==='ArrowDown'){sel=Math.min(sel+1,cur.length-1);render();e.preventDefault()}else if(e.key==='ArrowUp'){sel=Math.max(sel-1,0);render();e.preventDefault()}else if(e.key==='Enter')run(sel)};
+pal.onclick=e=>{if(e.target===pal)closeP()};$('#pbtn').onclick=openP;
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('open')?closeP():openP()}else if(e.key==='Escape')closeP();
+ else if(e.key==='t'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)&&!e.ctrlKey&&!e.metaKey)flip()});
+
+/* gravity field */
+(function(){const c=$('#field'),x=c.getContext('2d');let W,H,P=[],m={x:null,y:null},blast=0,run=true;
+const COL={dark:['111,242,255','185,166,255','255,216,154'],light:['10,134,160','100,68,224','168,93,0']};
+const light=()=>root.dataset.theme==='light';
+function size(){const d=Math.min(devicePixelRatio||1,2),r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);x.fillStyle=light()?'#f7f6ff':'#05060d';x.fillRect(0,0,W,H)}
+const cx=()=>W>800?W*.72:W*.5,cy=()=>H*.5;
+function spawn(p,far){const a=Math.random()*6.283,r=far?220+Math.random()*Math.max(W,H)*.5:40+Math.pow(Math.random(),1.6)*Math.max(W,H)*.7,v=Math.sqrt(900/(r+30))*1.9;
+ p.x=cx()+Math.cos(a)*r;p.y=cy()+Math.sin(a)*r*.62;p.vx=-Math.sin(a)*v;p.vy=Math.cos(a)*v*.62;p.k=(Math.random()*3)|0;p.a=.3+Math.random()*.6;return p}
+function seed(){P=[];const n=Math.min(850,Math.floor(W*H/1700));for(let i=0;i<n;i++)P.push(spawn({}))}
+function frame(){if(!run)return;const L=light(),X=cx(),Y=cy(),pal=COL[L?'light':'dark'];
+ x.fillStyle=L?'rgba(247,246,255,.16)':'rgba(5,6,13,.14)';x.fillRect(0,0,W,H);x.globalCompositeOperation=L?'source-over':'lighter';
+ const sgn=window.__gravFlip?-1:1;
+ for(const p of P){let dx=X-p.x,dy=Y-p.y,d2=dx*dx+dy*dy+900,iv=1/Math.sqrt(d2),f=900/d2;p.vx+=dx*iv*f*sgn;p.vy+=dy*iv*f*sgn;
+  if(m.x!==null){const mx=m.x-p.x,my=m.y-p.y,md=mx*mx+my*my+1600,mi=1/Math.sqrt(md),mf=(1400/md)*(blast>0?-6:1);p.vx+=mx*mi*mf;p.vy+=my*mi*mf}
+  p.vx*=.9992;p.vy*=.9992;const ox=p.x,oy=p.y;p.x+=p.vx;p.y+=p.vy;
+  if(d2<1400||p.x<-80||p.x>W+80||p.y<-80||p.y>H+80){spawn(p,true);continue}
+  x.strokeStyle='rgba('+pal[p.k]+','+p.a+')';x.lineWidth=1.1;x.beginPath();x.moveTo(ox,oy);x.lineTo(p.x,p.y);x.stroke()}
+ if(blast>0)blast--;x.globalCompositeOperation='source-over';
+ const g=x.createRadialGradient(X,Y,0,X,Y,70);g.addColorStop(0,L?'rgba(100,68,224,.8)':'rgba(255,255,255,.9)');g.addColorStop(.25,L?'rgba(10,134,160,.3)':'rgba(111,242,255,.35)');g.addColorStop(1,'rgba(111,242,255,0)');x.fillStyle=g;x.beginPath();x.arc(X,Y,70,0,7);x.fill();
+ requestAnimationFrame(frame)}
+size();seed();
+if(reduce){x.globalCompositeOperation='source-over';P.forEach(p=>{x.fillStyle='rgba('+COL[light()?'light':'dark'][p.k]+','+p.a*.6+')';x.fillRect(p.x,p.y,1.6,1.6)})}else requestAnimationFrame(frame);
+addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
+c.parentElement.addEventListener('pointerdown',e=>{if(e.target.closest('a,button'))return;blast=18});
+addEventListener('resize',()=>{size();seed()});
+new MutationObserver(()=>{size()}).observe(root,{attributes:true,attributeFilter:['data-theme']});
+new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!run&&!reduce){run=true;requestAnimationFrame(frame)}else if(!v)run=false}).observe($('#top'));
+})();
+</script>
 </body>
 </html>

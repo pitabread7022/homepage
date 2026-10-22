@@ -1,0 +1,12 @@
+/* TEAM */
+Name: Mubashshir Uddin
+Role: Deep Learning Engineer
+Site: https://github.com/pitabread7022
+Location: Gurgaon, India
+
+/* THANKS */
+Fonts: Syne and Hanken Grotesk (Google Fonts)
+
+/* SITE */
+Last update: 2026/10/23
+Standards: HTML5, CSS3, vanilla JavaScript. No frameworks, no trackers.
